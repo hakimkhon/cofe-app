@@ -21,7 +21,7 @@ class KfcWidget extends StatelessWidget {
               image: const DecorationImage(
                 fit: BoxFit.fill,
                 image: AssetImage(
-                  ImageAssets.kfc,
+                  ImageAssets.kfc_2,
                 ),
               ),
             ),

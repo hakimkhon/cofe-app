@@ -22,8 +22,9 @@ class CustomButton extends StatelessWidget {
         width: double.infinity,
         height: 50,
         decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(14),
-            color: AppColors.primaryColor),
+          borderRadius: BorderRadius.circular(14),
+          color: AppColors.primaryColor,
+        ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -43,7 +44,6 @@ class CustomButton extends StatelessWidget {
               child: const Icon(
                 Icons.shopping_cart_outlined,
                 color: AppColors.secondaryColor,
-                size: 16,
               ),
             ),
           ],

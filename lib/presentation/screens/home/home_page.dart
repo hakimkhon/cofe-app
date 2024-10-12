@@ -1,5 +1,6 @@
 import 'package:cafe/data/mock/mock_data.dart';
 import 'package:cafe/presentation/core/constant/colors.dart';
+import 'package:cafe/presentation/core/resource/assets.dart';
 import 'package:cafe/presentation/screens/home/widgets/header_widget.dart';
 import 'package:cafe/presentation/screens/home/widgets/kfc_widget.dart';
 import 'package:cafe/presentation/widgets/custom_text_widget.dart';
@@ -15,17 +16,16 @@ class HomePage extends StatelessWidget {
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-          child: Column(
+          child: ListView(
             children: [
               const HeaderWidget(),
-              // PageView.builder(),
               const KfcWidget(),
               SizedBox(
                 width: double.infinity,
                 child: Wrap(
                   alignment: WrapAlignment.spaceBetween,
                   children: [
-                    for (int i = 0; i < 11; i++)
+                    for (int i = 0; i < MockData.fastFood.length; i++)
                       ZoomTapAnimation(
                         child: foods(
                           MockData.fastFood[i].title,
@@ -35,10 +35,49 @@ class HomePage extends StatelessWidget {
                               ? AppColors.secondaryColor
                               : AppColors.color108,
                         ),
-                      )
+                      ),
                   ],
                 ),
               ),
+              const Row(
+                children: [
+                  Image(
+                    width: 40,
+                    fit: BoxFit.fill,
+                    image: AssetImage(ImageAssets.burgercha),
+                  ),
+                  VerticalDivider(
+                    color: AppColors.primaryColor,
+                    thickness: 2,
+                  ),
+                  MyText(
+                    data: "Burger",
+                    size: 21,
+                    color: AppColors.color108,
+                  ),
+                ],
+              ),
+              Card(
+                child: const Column(
+                  children: [
+                    Image(
+                      image: AssetImage(
+                        ImageAssets.burger,
+                      ),
+                    ),
+                    MyText(
+                      data: "Burger",
+                      size: 28,
+                      color: AppColors.color43,
+                    ),
+                    MyText(
+                      data: "Burger",
+                      size: 28,
+                      color: AppColors.color43,
+                    ),
+                  ],
+                ),
+              )
             ],
           ),
         ),

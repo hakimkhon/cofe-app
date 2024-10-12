@@ -8,6 +8,8 @@ class ImageAssets {
   static const String kfc_1= "$imagePath/kfc_1.png";
   static const String kfc_2= "$imagePath/kfc_2.jpg";
   static const String kfc_3= "$imagePath/kfc_3.jpg";
+  static const String burgercha= "$imagePath/burgercha.png";
+  static const String burger= "$imagePath/burger.png";
 }
 
 class LottieAssets {

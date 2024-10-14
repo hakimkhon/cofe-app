@@ -20,9 +20,9 @@ class CustomButton extends StatelessWidget {
       },
       child: Container(
         width: double.infinity,
-        height: 50,
+        height: 44,
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(14),
+          borderRadius: BorderRadius.circular(12),
           color: AppColors.primaryColor,
         ),
         child: Row(

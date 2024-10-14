@@ -1,4 +1,5 @@
 import 'package:cafe/presentation/core/constant/colors.dart';
+import 'package:cafe/presentation/core/resource/assets.dart';
 import 'package:flutter/material.dart';
 
 class MyText extends StatelessWidget {
@@ -14,6 +15,7 @@ class MyText extends StatelessWidget {
     this.maxLines = 20,
     this.size = 14,
     this.letterSpacing = 0,
+    this.fontFamily = AppFonts.inriaSans,
   });
   final String data;
   final Color color;
@@ -23,7 +25,7 @@ class MyText extends StatelessWidget {
   final double top;
   final double bottom;
   final FontWeight fontWeight;
-  // final String fontFamily;
+  final String fontFamily;
   final int maxLines;
   final double letterSpacing;
 
@@ -38,7 +40,7 @@ class MyText extends StatelessWidget {
           fontSize: size,
           color: color,
           fontWeight: fontWeight,
-          // fontFamily: fontFamily,
+          fontFamily: fontFamily,
           letterSpacing: letterSpacing,
         ),
         maxLines: maxLines,

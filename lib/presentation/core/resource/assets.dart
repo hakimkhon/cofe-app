@@ -10,6 +10,7 @@ class ImageAssets {
   static const String kfc_3= "$imagePath/kfc_3.jpg";
   static const String burgercha= "$imagePath/burgercha.png";
   static const String burger= "$imagePath/burger.png";
+  static const String chizburger= "$imagePath/chizburger.png";
 }
 
 class LottieAssets {
@@ -21,6 +22,6 @@ class IconAssets {
 }
 
 class AppFonts {
-  // static const String inriaSans = "InriaSans";
+  static const String inriaSans = "InriaSans";
   // static const String lato = "Lato";
 }

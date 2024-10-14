@@ -1,4 +1,5 @@
 import 'package:cafe/data/routes/cofe_route.dart';
+import 'package:cafe/presentation/core/constant/colors.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -15,7 +16,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.fromSeed(seedColor: AppColors.primaryColor),
         useMaterial3: true,
       ),
       onGenerateRoute: CofeRoute.generateRoute,

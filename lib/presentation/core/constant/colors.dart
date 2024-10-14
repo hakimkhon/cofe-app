@@ -7,6 +7,8 @@ class AppColors {
   static const color43 = Color.fromRGBO(43, 43, 43, 1);
   static const color119 = Color.fromRGBO(119, 119, 119, 1);
   static const color108 = Color.fromRGBO(108, 108, 108, 1);
+  static const color169 = Color.fromRGBO(169, 169, 169, 1);
   static const color230 = Color.fromRGBO(230, 230, 230, 1);
   static const color246 = Color.fromRGBO(246, 246, 246, 0.9);
+  static const color254 = Color.fromRGBO(254, 204, 0, 0.8);
 }

@@ -1,12 +1,14 @@
 import 'package:cafe/presentation/screens/auth/confirm_page.dart';
 import 'package:cafe/presentation/screens/auth/register_page.dart';
 import 'package:cafe/presentation/screens/home/home_page.dart';
+import 'package:cafe/presentation/screens/menu/burger_menu.dart';
 import 'package:flutter/material.dart';
 
 class CofeRouteNames {
   static const String home = '/home';
   static const String register = '/register';
   static const String confirm = '/confirm';
+  static const String menu = '/menu';
 
 }
 
@@ -22,6 +24,8 @@ class CofeRoute {
         return MaterialPageRoute(builder: (context) => const HomePage());
       case CofeRouteNames.register:
         return MaterialPageRoute(builder: (context) => const RegisterPage());
+      case CofeRouteNames.menu:
+        return MaterialPageRoute(builder: (context) => const BurgerMenu());
       case CofeRouteNames.confirm:
         return MaterialPageRoute(builder: (context) => const ConfirmPage());
       default:

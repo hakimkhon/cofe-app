@@ -1,3 +1,4 @@
+import 'package:cafe/data/routes/cofe_route.dart';
 import 'package:cafe/presentation/core/constant/colors.dart';
 import 'package:cafe/presentation/core/resource/assets.dart';
 import 'package:flutter/material.dart';
@@ -7,15 +8,15 @@ class HeaderWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Row(
+    return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Image(
+        const Image(
           image: AssetImage(IconAssets.logo),
           width: 120,
         ),
-        Spacer(),
-        Stack(
+        const Spacer(),
+        const Stack(
           children: [
             Card(
               child: SizedBox(
@@ -48,9 +49,14 @@ class HeaderWidget extends StatelessWidget {
           child: SizedBox(
             width: 40,
             height: 40,
-            child: Icon(
-              Icons.sort_outlined,
-              size: 20,
+            child: IconButton(
+              onPressed: () {
+                Navigator.pushNamed(context, CofeRouteNames.menu);
+              },
+              icon: const Icon(
+                Icons.sort_outlined,
+                size: 20,
+              ),
             ),
           ),
         ),

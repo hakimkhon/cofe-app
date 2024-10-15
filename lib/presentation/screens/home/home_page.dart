@@ -1,4 +1,3 @@
-import 'package:cafe/presentation/core/constant/colors.dart';
 import 'package:cafe/presentation/screens/home/widgets/burger_widget.dart';
 import 'package:cafe/presentation/screens/home/widgets/fast_food_widget.dart';
 import 'package:cafe/presentation/screens/home/widgets/header_widget.dart';

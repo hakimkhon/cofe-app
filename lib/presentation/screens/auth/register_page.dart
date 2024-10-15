@@ -1,4 +1,4 @@
-import 'package:cafe/data/routes/cofe_route.dart';
+import 'package:cafe/data/routes/cafe_route.dart';
 import 'package:cafe/presentation/core/constant/colors.dart';
 import 'package:cafe/presentation/core/resource/assets.dart';
 import 'package:cafe/presentation/widgets/custom_button.dart';
@@ -59,7 +59,7 @@ class RegisterPage extends StatelessWidget {
               CustomButton(
                 text: "Yuborish",
                 onTap: () {
-                  Navigator.pushNamed(context, CofeRouteNames.confirm);
+                  Navigator.pushNamed(context, CafeRouteNames.confirm);
                 },
               ),
             ],

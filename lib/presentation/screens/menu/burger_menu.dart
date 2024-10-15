@@ -1,3 +1,4 @@
+import 'package:cafe/data/routes/cafe_route.dart';
 import 'package:cafe/presentation/core/constant/colors.dart';
 import 'package:cafe/presentation/core/resource/assets.dart';
 import 'package:cafe/presentation/widgets/custom_text_widget.dart';
@@ -13,17 +14,62 @@ class BurgerMenu extends StatelessWidget {
       body: SafeArea(
         bottom: false,
         child: Container(
-          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
+          padding: const EdgeInsets.symmetric(vertical: 20),
           color: AppColors.secondaryColor,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              
               Image.asset(IconAssets.logo),
-              TextButton(onPressed: () {}, child: const MyText(data: "- Asosiy", size: 26, color: AppColors.color79,)),
-              TextButton(onPressed: () {}, child: const MyText(data: "- Filiallar", size: 26, color: AppColors.color79,)),
-              TextButton(onPressed: () {}, child: const MyText(data: "- Biz haqimizda", size: 26, color: AppColors.color79,)),
-              TextButton(onPressed: () {}, child: const MyText(data: "- Yangiliklar", size: 26, color: AppColors.color79,)),
+              TextButton(
+                onPressed: () {
+                  Navigator.pushNamedAndRemoveUntil(
+                    context,
+                    CafeRouteNames.home,
+                    (predicate) => false,
+                  );
+                },
+                child: const MyText(
+                  data: "- Asosiy",
+                  size: 26,
+                  left: 16,
+                  top: 16,
+                  color: AppColors.color79,
+                ),
+              ),
+              TextButton(
+                onPressed: () {
+                  Navigator.pushNamedAndRemoveUntil(
+                    context,
+                    CafeRouteNames.filials,
+                    (predicate) => false,
+                  );
+                },
+                child: const MyText(
+                  data: "- Filiallar",
+                  size: 26,
+                  left: 16,
+                  color: AppColors.color79,
+                ),
+              ),
+              TextButton(
+                onPressed: () {},
+                child: const MyText(
+                  data: "- Biz haqimizda",
+                  size: 26,
+                  left: 16,
+                  color: AppColors.color79,
+                ),
+              ),
+              TextButton(
+                onPressed: () {},
+                child: const MyText(
+                  data: "- Yangiliklar",
+                  size: 26,
+                  left: 16,
+                  color: AppColors.color79,
+                ),
+              ),
             ],
           ),
         ),

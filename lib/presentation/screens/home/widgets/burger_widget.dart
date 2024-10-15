@@ -9,16 +9,16 @@ class BurgerWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(top: 30),
-      child: Column(
-        children: [
-          Row(
+    return Column(
+      children: [
+        Padding(
+          padding: const EdgeInsets.only(top: 30, bottom: 20),
+          child: Row(
             children: [
               const Image(
                 width: 38,
                 fit: BoxFit.fill,
-                image: AssetImage(ImageAssets.burgercha),
+                image: AssetImage(IconAssets.burgercha),
               ),
               Container(
                 margin: const EdgeInsets.only(left: 15, right: 5),
@@ -33,92 +33,92 @@ class BurgerWidget extends StatelessWidget {
               ),
             ],
           ),
-          Card(
-            // shadowColor: const Color.fromRGBO(0, 0, 0, 0.05),
-            color: AppColors.secondaryColor,
-            child: Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 30.0,
-                vertical: 25,
-              ),
-              child: Column(
-                children: [
-                  const Image(
-                    image: AssetImage(
-                      ImageAssets.burger,
-                    ),
+        ),
+        Card(
+          // shadowColor: const Color.fromRGBO(0, 0, 0, 0.05),
+          color: AppColors.secondaryColor,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(
+              horizontal: 30.0,
+              vertical: 25,
+            ),
+            child: Column(
+              children: [
+                const Image(
+                  image: AssetImage(
+                    ImageAssets.burger,
                   ),
-                  const MyText(
-                    data: "Burger",
-                    size: 28,
-                    color: AppColors.color43,
-                  ),
-                  const MyText(
-                    data: "24 000 so'm",
-                    size: 20,
-                    color: AppColors.color169,
-                    bottom: 15,
-                  ),
-                  CustomButton(onTap: () {})
-                ],
-              ),
+                ),
+                const MyText(
+                  data: "Burger",
+                  size: 28,
+                  color: AppColors.color43,
+                ),
+                const MyText(
+                  data: "24 000 so'm",
+                  size: 20,
+                  color: AppColors.color169,
+                  bottom: 15,
+                ),
+                CustomButton(onTap: () {})
+              ],
             ),
           ),
-          const SizedBox(
-            height: 20,
-          ),
-          Card(
-            // shadowColor: const Color.fromRGBO(0, 0, 0, 0.05),
-            color: AppColors.secondaryColor,
-            child: Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 30.0,
-                vertical: 25,
-              ),
-              child: Column(
-                children: [
-                  const Image(
-                    image: AssetImage(
-                      ImageAssets.burger,
+        ),
+        const SizedBox(
+          height: 20,
+        ),
+        Card(
+          // shadowColor: const Color.fromRGBO(0, 0, 0, 0.05),
+          color: AppColors.secondaryColor,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(
+              horizontal: 30.0,
+              vertical: 25,
+            ),
+            child: Column(
+              children: [
+                const Image(
+                  image: AssetImage(
+                    ImageAssets.burger,
+                  ),
+                ),
+                const MyText(
+                  data: "Burger",
+                  size: 28,
+                  color: AppColors.color43,
+                ),
+                const MyText(
+                  data: "24 000 so'm",
+                  size: 20,
+                  color: AppColors.color169,
+                  bottom: 15,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    IconButton(
+                      onPressed: () {},
+                      icon: const Icon(Icons.remove),
                     ),
-                  ),
-                  const MyText(
-                    data: "Burger",
-                    size: 28,
-                    color: AppColors.color43,
-                  ),
-                  const MyText(
-                    data: "24 000 so'm",
-                    size: 20,
-                    color: AppColors.color169,
-                    bottom: 15,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      IconButton(
-                        onPressed: () {},
-                        icon: const Icon(Icons.remove),
-                      ),
-                      const MyText(
-                        data: "1",
-                        left: 10,
-                        right: 10,
-                        color: AppColors.color108,
-                        size: 20,
-                      ),
-                      IconButton(
-                        onPressed: () {},
-                        icon: const Icon(Icons.add),
-                      ),
-                    ],
-                  )
-                ],
-              ),
+                    const MyText(
+                      data: "1",
+                      left: 10,
+                      right: 10,
+                      color: AppColors.color108,
+                      size: 20,
+                    ),
+                    IconButton(
+                      onPressed: () {},
+                      icon: const Icon(Icons.add),
+                    ),
+                  ],
+                )
+              ],
             ),
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }

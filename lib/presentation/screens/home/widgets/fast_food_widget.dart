@@ -19,7 +19,7 @@ class FastFoodWidget extends StatelessWidget {
               child: foods(
                 MockData.fastFood[i].title,
                 MockData.fastFood[i].icon,
-                i == 0 ? AppColors.primaryColor : AppColors.color246,
+                i == 0 ? AppColors.primaryColor : Colors.black.withOpacity(0.04),
                 i == 0 ? AppColors.secondaryColor : AppColors.color108,
               ),
             ),

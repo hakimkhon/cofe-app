@@ -30,7 +30,7 @@ class MockData {
   static List<FastFoodModel> fastFood = [
     FastFoodModel(
       title: "Burger",
-      icon: "assets/icons/burger.png",
+      icon: "assets/icons/burgercha.png",
     ),
     FastFoodModel(
       title: "Donar",

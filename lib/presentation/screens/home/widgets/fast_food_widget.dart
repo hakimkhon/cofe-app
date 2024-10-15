@@ -29,7 +29,7 @@ class FastFoodWidget extends StatelessWidget {
   }
   foods(String title, String icon, Color color, Color textColor) {
     return Container(
-      width: 200,
+      width: 175,
       height: 42,
       margin: const EdgeInsets.symmetric(vertical: 8),
       decoration: BoxDecoration(
@@ -41,12 +41,13 @@ class FastFoodWidget extends StatelessWidget {
         children: [
           Image(
             image: AssetImage(icon),
-            width: 30,
+            width: 24,
           ),
           MyText(
             data: title,
             color: textColor,
             size: 18,
+            left: 4,
           ),
         ],
       ),

@@ -53,7 +53,13 @@ class BurgerMenu extends StatelessWidget {
                 ),
               ),
               TextButton(
-                onPressed: () {},
+                onPressed: () {
+                   Navigator.pushNamedAndRemoveUntil(
+                    context,
+                    CafeRouteNames.about,
+                    (predicate) => false,
+                  );
+                },
                 child: const MyText(
                   data: "- Biz haqimizda",
                   size: 26,
@@ -62,7 +68,13 @@ class BurgerMenu extends StatelessWidget {
                 ),
               ),
               TextButton(
-                onPressed: () {},
+                onPressed: () {
+                   Navigator.pushNamedAndRemoveUntil(
+                    context,
+                    CafeRouteNames.news,
+                    (predicate) => false,
+                  );
+                },
                 child: const MyText(
                   data: "- Yangiliklar",
                   size: 26,

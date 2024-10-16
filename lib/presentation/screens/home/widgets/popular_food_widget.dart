@@ -2,6 +2,7 @@ import 'package:cafe/presentation/core/constant/colors.dart';
 import 'package:cafe/presentation/core/resource/assets.dart';
 import 'package:cafe/presentation/widgets/custom_button.dart';
 import 'package:cafe/presentation/widgets/custom_text_widget.dart';
+import 'package:cafe/presentation/widgets/my_vertical_divider_text.dart';
 import 'package:flutter/material.dart';
 
 class PopularFoodWidget extends StatelessWidget {
@@ -11,23 +12,8 @@ class PopularFoodWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Padding(
-          padding: const EdgeInsets.only(top: 30, bottom: 20),
-          child: Row(
-            children: [
-              Container(
-                margin: const EdgeInsets.only(right: 5),
-                height: 36,
-                width: 3,
-                color: AppColors.color254,
-              ),
-              const MyText(
-                data: "OMMABOP",
-                size: 21,
-                color: AppColors.color108,
-              ),
-            ],
-          ),
+        const MyVerticalDividerText(
+          data: "ommabop",
         ),
         Card(
           // shadowColor: const Color.fromRGBO(0, 0, 0, 0.05),

@@ -1,4 +1,5 @@
 import 'package:cafe/data/routes/cafe_route.dart';
+import 'package:cafe/data/routes/navigator_service.dart';
 import 'package:cafe/presentation/core/constant/colors.dart';
 import 'package:flutter/material.dart';
 
@@ -19,6 +20,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: AppColors.secondaryColor),
         useMaterial3: true,
       ),
+      navigatorKey: NavigationService.instance.navigatorKey,
       onGenerateRoute: CafeRoute.generateRoute,
       initialRoute: CafeRouteNames.register,
     );

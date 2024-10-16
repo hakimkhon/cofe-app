@@ -1,8 +1,32 @@
 import 'package:cafe/data/model/fast_food_model.dart';
+import 'package:cafe/data/model/filials_model.dart';
 import 'package:cafe/data/model/news_model.dart';
 import 'package:cafe/presentation/core/resource/assets.dart';
 
 class MockData {
+  static List<FilialsModel> filials = [
+    FilialsModel(
+      map: ImageAssets.map,
+      sityName: "Namangan shahar",
+      workingTime: "09:00 - 15:00",
+    ),
+    FilialsModel(
+      map: ImageAssets.map,
+      sityName: "Namangan shahar",
+      workingTime: "09:00 - 15:00",
+    ),
+    FilialsModel(
+      map: ImageAssets.map,
+      sityName: "Namangan shahar",
+      workingTime: "09:00 - 15:00",
+    ),
+    FilialsModel(
+      map: ImageAssets.map,
+      sityName: "Namangan shahar",
+      workingTime: "09:00 - 15:00",
+    ),
+  ];
+
   static List<NewsModel> news = [
     NewsModel(
       title: "KFC endilikda arzonlashti",

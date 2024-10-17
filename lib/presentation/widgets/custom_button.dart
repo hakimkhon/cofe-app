@@ -1,4 +1,5 @@
 import 'package:cafe/presentation/core/constant/colors.dart';
+import 'package:cafe/presentation/core/constant/sizes.dart';
 import 'package:flutter/material.dart';
 import 'package:zoom_tap_animation/zoom_tap_animation.dart';
 
@@ -20,7 +21,7 @@ class CustomButton extends StatelessWidget {
       },
       child: Container(
         width: double.infinity,
-        height: 44,
+        height: ConstSizes.height(5),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(12),
           color: AppColors.primaryColor,
@@ -30,20 +31,23 @@ class CustomButton extends StatelessWidget {
           children: [
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10.0),
-              child: Text(
-                text == "" ? "Savatga qo’shish" : text,
-                style: const TextStyle(
-                  fontSize: 16,
-                  color: AppColors.secondaryColor,
-                  // fontFamily: AppFonts.inriaSans,
+              child: FittedBox(
+                fit: BoxFit.fitWidth,
+                child: Text(
+                  text == "" ? "Savatga qo’shish" : text,
+                  style: TextStyle(
+                    fontSize: ConstSizes.width(4),
+                    color: AppColors.secondaryColor,
+                  ),
                 ),
               ),
             ),
             Visibility(
               visible: text == "",
-              child: const Icon(
+              child: Icon(
                 Icons.shopping_cart_outlined,
                 color: AppColors.secondaryColor,
+                size: ConstSizes.width(4),
               ),
             ),
           ],

@@ -1,5 +1,6 @@
 import 'package:cafe/data/mock/mock_data.dart';
 import 'package:cafe/presentation/core/constant/colors.dart';
+import 'package:cafe/presentation/core/constant/sizes.dart';
 import 'package:cafe/presentation/widgets/custom_text_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:zoom_tap_animation/zoom_tap_animation.dart';
@@ -29,8 +30,8 @@ class FastFoodWidget extends StatelessWidget {
   }
   foods(String title, String icon, Color color, Color textColor) {
     return Container(
-      width: 175,
-      height: 42,
+      width: ConstSizes.width(44),
+      height: ConstSizes.height(4),
       margin: const EdgeInsets.symmetric(vertical: 8),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(16),
@@ -41,12 +42,12 @@ class FastFoodWidget extends StatelessWidget {
         children: [
           Image(
             image: AssetImage(icon),
-            width: 24,
+            width: ConstSizes.width(5),
           ),
           MyText(
             data: title,
             color: textColor,
-            size: 18,
+            size: ConstSizes.width(4),
             left: 4,
           ),
         ],

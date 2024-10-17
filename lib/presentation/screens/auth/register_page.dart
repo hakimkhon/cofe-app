@@ -1,6 +1,5 @@
 import 'package:cafe/data/routes/cafe_route.dart';
 import 'package:cafe/presentation/core/constant/colors.dart';
-import 'package:cafe/presentation/core/constant/sizes.dart';
 import 'package:cafe/presentation/core/resource/assets.dart';
 import 'package:cafe/presentation/widgets/custom_button.dart';
 import 'package:cafe/presentation/widgets/custom_text_field.dart';

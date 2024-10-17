@@ -1,4 +1,5 @@
 import 'package:cafe/presentation/core/constant/colors.dart';
+import 'package:cafe/presentation/core/constant/sizes.dart';
 import 'package:cafe/presentation/screens/home/widgets/header_widget.dart';
 import 'package:cafe/presentation/widgets/custom_button.dart';
 import 'package:cafe/presentation/widgets/custom_text_field.dart';
@@ -17,9 +18,7 @@ class ProfilePage extends StatelessWidget {
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-          child: Column(
-            // mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
+          child: ListView(
             children: [
               const HeaderWidget(),
               const MyVerticalDividerText(data: "KHATAMOV NURIDDIN"),
@@ -52,31 +51,47 @@ class ProfilePage extends StatelessWidget {
                 controller: phoneNumberController,
               ),
               Container(
-        width: double.infinity,
-        height: 44,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(12),
-          color: AppColors.primaryColor,
-        ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10.0),
-              child: Text(
-                "ETAMIN IT SOLUTIONS",
-                style: const TextStyle(
-                  fontSize: 16,
-                  color: AppColors.secondaryColor,
-                  // fontFamily: AppFonts.inriaSans,
+                width: double.infinity,
+                height: 44,
+                margin: EdgeInsets.only(
+                  top: ConstSizes.height(2),
+                  bottom: ConstSizes.height(3),
+                ),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(12),
+                  color: Colors.black.withOpacity(0.04),
+                ),
+                child: const Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(Icons.location_on_outlined),
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 10.0),
+                      child: Text(
+                        "ETAMIN IT SOLUTIONS",
+                        style: TextStyle(
+                          fontSize: 16,
+                          color: AppColors.color108,
+                          // fontFamily: AppFonts.inriaSans,
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ),
-            ),
-            
-          ],
-        ),
-      ),
-              CustomButton(onTap: (){}, text: "Ma’lumotlarni saqlash",)
+              CustomButton(
+                onTap: () {},
+                text: "Ma’lumotlarni saqlash",
+              ),
+              const MyVerticalDividerText(
+                data: "Buyurtmalar tarixi",
+                textSize: 21,
+                top: 40,
+              ),
+              SizedBox(
+                width: ConstSizes.width(100),
+                height: ConstSizes.height(400),
+              ),
             ],
           ),
         ),

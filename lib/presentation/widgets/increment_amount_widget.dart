@@ -2,9 +2,11 @@ import 'package:cafe/presentation/core/constant/colors.dart';
 import 'package:cafe/presentation/core/constant/sizes.dart';
 import 'package:cafe/presentation/widgets/custom_text_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:zoom_tap_animation/zoom_tap_animation.dart';
 
 class IncrementAmountWidget extends StatefulWidget {
   const IncrementAmountWidget({super.key});
+  // final Color btnCollor;
 
   @override
   State<IncrementAmountWidget> createState() => _IncrementAmountWidgetState();
@@ -17,16 +19,24 @@ class _IncrementAmountWidgetState extends State<IncrementAmountWidget> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        IconButton(
-          onPressed: () {
+        ZoomTapAnimation(
+          onTap: () {
             if (count > 0) {
-              count--;
-              setState(() {});
+              setState(() {
+                count--;
+              });
             }
           },
-          icon: Icon(
-            Icons.remove,
-            size: ConstSizes.width(5),
+          child: Container(
+            width: 50,
+            height: 40,
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(13), color: Colors.white),
+            child: Icon(
+              Icons.remove,
+              size: ConstSizes.width(5),
+              color: AppColors.color108,
+            ),
           ),
         ),
         MyText(
@@ -36,17 +46,24 @@ class _IncrementAmountWidgetState extends State<IncrementAmountWidget> {
           color: AppColors.color108,
           size: ConstSizes.width(5),
         ),
-        IconButton(
-          onPressed: () {
+        ZoomTapAnimation(
+          onTap: () {
             if (count < 99) {
               setState(() {
                 count++;
               });
             }
           },
-          icon: Icon(
-            Icons.add,
-            size: ConstSizes.width(5),
+          child: Container(
+            width: 50,
+            height: 40,
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(13), color: Colors.white),
+            child: Icon(
+              Icons.add,
+              size: ConstSizes.width(5),
+              color: AppColors.color108,
+            ),
           ),
         ),
       ],

@@ -17,19 +17,23 @@ class HeaderWidget extends StatelessWidget {
           fit: BoxFit.fill,
         ),
         const Spacer(),
-        const Stack(
+        Stack(
           children: [
             Card(
               child: SizedBox(
-                width: 40,
-                height: 40,
-                child: Icon(
-                  Icons.shopping_cart_outlined,
-                  size: 20,
-                ),
-              ),
+                  width: 40,
+                  height: 40,
+                  child: IconButton(
+                    onPressed: () {
+                      Navigator.pushNamed(context, CafeRouteNames.booking);
+                    },
+                    icon: const Icon(
+                      Icons.shopping_cart_outlined,
+                      size: 20,
+                    ),
+                  )),
             ),
-            Positioned(
+            const Positioned(
               left: 16,
               top: -1,
               child: CircleAvatar(

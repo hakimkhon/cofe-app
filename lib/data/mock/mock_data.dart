@@ -1,9 +1,53 @@
 import 'package:cafe/data/model/fast_food_model.dart';
 import 'package:cafe/data/model/filials_model.dart';
 import 'package:cafe/data/model/news_model.dart';
+import 'package:cafe/data/model/orders_model.dart';
 import 'package:cafe/presentation/core/resource/assets.dart';
 
 class MockData {
+  static List<OrdersModel> orders = [
+    OrdersModel(
+      title: "Chizburger",
+      price: 24000,
+      image: IconAssets.burger,
+      count: 1,
+      status: "Yo'lda",
+      dateTime: "16.10.2024",
+    ),
+    OrdersModel(
+      title: "Garnir",
+      price: 31000,
+      image: IconAssets.garnir,
+      count: 1,
+      status: "Yo'lda",
+      dateTime: "16.10.2024",
+    ),
+    OrdersModel(
+      title: "Pitsa",
+      price: 31000,
+      image: IconAssets.pitsa,
+      count: 1,
+      status: "Yo'lda",
+      dateTime: "16.10.2024",
+    ),
+    OrdersModel(
+      title: "Donar",
+      price: 31000,
+      image: IconAssets.donar,
+      count: 1,
+      status: "Yo'lda",
+      dateTime: "16.10.2024",
+    ),
+    OrdersModel(
+      title: "Lavash",
+      price: 31000,
+      image: IconAssets.lavash,
+      count: 1,
+      status: "Yo'lda",
+      dateTime: "16.10.2024",
+    ),
+  ];
+
   static List<FilialsModel> filials = [
     FilialsModel(
       map: ImageAssets.map,
@@ -33,68 +77,68 @@ class MockData {
       subTitle:
           "Endi 1 kilogram KFC’ni atigi 30 ming so’mga harid qilishingiz mumkin!",
       image: ImageAssets.kfc_1,
-      data: DateTime(06, 10, 2024),
+      data: "05.10.2024",
     ),
     NewsModel(
-      title: "KFC endilikda arzonlashti yana",
+      title: "KFC endilikda arzonladi",
       subTitle:
           "Endi 0.5 kilogram KFC’ni atigi 15 ming so’mga harid qilishingiz mumkin!",
       image: ImageAssets.kfc_2,
-      data: DateTime(06, 10, 2024),
+      data: "06.10.2024",
     ),
     NewsModel(
       title: "KFC endilikda arzonlashti",
       subTitle:
           "Endi 100 gram KFC’ni atigi 3 ming so’mga harid qilishingiz mumkin!",
       image: ImageAssets.kfc_3,
-      data: DateTime(06, 10, 2024),
+      data: "07.10.2024",
     ),
   ];
 
   static List<FastFoodModel> fastFood = [
     FastFoodModel(
       title: "Burger",
-      icon: "assets/icons/burgercha.png",
+      icon: IconAssets.burger,
     ),
     FastFoodModel(
       title: "Donar",
-      icon: "assets/icons/donar.png",
+      icon: IconAssets.donar,
     ),
     FastFoodModel(
       title: "Garnir",
-      icon: "assets/icons/garnir.png",
+      icon: IconAssets.garnir,
     ),
     FastFoodModel(
       title: "Kombo",
-      icon: "assets/icons/kombo.png",
+      icon: IconAssets.kombo,
     ),
     FastFoodModel(
       title: "Lavash",
-      icon: "assets/icons/lavash.png",
+      icon: IconAssets.lavash,
     ),
     FastFoodModel(
       title: "Sendvich",
-      icon: "assets/icons/sendvich.png",
+      icon: IconAssets.sendvich,
     ),
     FastFoodModel(
       title: "Sous",
-      icon: "assets/icons/sous.png",
+      icon: IconAssets.sous,
     ),
     FastFoodModel(
       title: "Salat",
-      icon: "assets/icons/salat.png",
+      icon: IconAssets.salat,
     ),
     FastFoodModel(
       title: "Pitsa",
-      icon: "assets/icons/pitsa.png",
+      icon: IconAssets.pitsa,
     ),
     FastFoodModel(
       title: "Qo'shimcha",
-      icon: "assets/icons/qo'shimcha.png",
+      icon: IconAssets.qoshimcha,
     ),
     FastFoodModel(
       title: "Ichimlik",
-      icon: "assets/icons/ichimlik.png",
+      icon: IconAssets.ichimlik,
     ),
   ];
 }

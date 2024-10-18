@@ -45,9 +45,10 @@ class RegisterPage extends StatelessWidget {
                     const Spacer(),
                     const MyText(
                       data: "Telefon raqamingizni kiriting:",
-                      size: 12,
+                      size: 14,
                       fontWeight: FontWeight.w300,
                       color: AppColors.color108,
+                      bottom: 4,
                     ),
                     CustomTextFieldWidget(
                       hintText: "Telefon raqamimgiz...",

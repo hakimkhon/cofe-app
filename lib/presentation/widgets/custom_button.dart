@@ -7,11 +7,19 @@ import 'package:zoom_tap_animation/zoom_tap_animation.dart';
 class CustomButton extends StatelessWidget {
   const CustomButton({
     super.key,
-    this.text = "",
     required this.onTap,
+    this.text = "",
+    this.borderRadius = 12,
+    this.color = AppColors.primaryColor,
+    this.borderColor = AppColors.primaryColor,
+    this.textColor = AppColors.secondaryColor,
   });
   final String text;
   final Function onTap;
+  final Color color;
+  final Color textColor;
+  final Color borderColor;
+  final double borderRadius;
 
   @override
   Widget build(BuildContext context) {
@@ -23,8 +31,9 @@ class CustomButton extends StatelessWidget {
         width: double.infinity,
         height: ConstSizes.height(5),
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(12),
-          color: AppColors.primaryColor,
+          border: Border.all(color: borderColor),
+          borderRadius: BorderRadius.circular(borderRadius),
+          color: color,
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -37,7 +46,7 @@ class CustomButton extends StatelessWidget {
                   text == "" ? "Savatga qo’shish" : text,
                   style: TextStyle(
                     fontSize: ConstSizes.width(4),
-                    color: AppColors.secondaryColor,
+                    color: textColor,
                   ),
                 ),
               ),

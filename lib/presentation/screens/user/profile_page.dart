@@ -1,6 +1,7 @@
 import 'package:cafe/presentation/core/constant/colors.dart';
 import 'package:cafe/presentation/core/constant/sizes.dart';
 import 'package:cafe/presentation/screens/home/widgets/header_widget.dart';
+import 'package:cafe/presentation/screens/bookings/orders_story_widget.dart';
 import 'package:cafe/presentation/widgets/custom_button.dart';
 import 'package:cafe/presentation/widgets/custom_text_field.dart';
 import 'package:cafe/presentation/widgets/custom_text_widget.dart';
@@ -23,10 +24,7 @@ class ProfilePage extends StatelessWidget {
               const HeaderWidget(),
               const MyVerticalDividerText(data: "KHATAMOV NURIDDIN"),
               const MyVerticalDividerText(
-                data: "ma'lumotlar",
-                textSize: 21,
-                top: 10,
-              ),
+                  data: "ma'lumotlar", textSize: 21, top: 10),
               const MyText(
                 data: "Ismingizni kiriting:",
                 size: 14,
@@ -47,9 +45,8 @@ class ProfilePage extends StatelessWidget {
                 color: AppColors.color108,
               ),
               CustomTextFieldWidget(
-                hintText: "Telefon raqamimgiz...",
-                controller: phoneNumberController,
-              ),
+                  hintText: "Telefon raqamimgiz...",
+                  controller: phoneNumberController),
               Container(
                 width: double.infinity,
                 height: 44,
@@ -79,19 +76,9 @@ class ProfilePage extends StatelessWidget {
                   ],
                 ),
               ),
-              CustomButton(
-                onTap: () {},
-                text: "Ma’lumotlarni saqlash",
-              ),
-              const MyVerticalDividerText(
-                data: "Buyurtmalar tarixi",
-                textSize: 21,
-                top: 40,
-              ),
-              SizedBox(
-                width: ConstSizes.width(100),
-                height: ConstSizes.height(400),
-              ),
+              CustomButton(onTap: () {}, text: "Ma’lumotlarni saqlash"),
+              const OrdersStoryWidget(),
+             
             ],
           ),
         ),

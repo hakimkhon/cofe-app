@@ -20,7 +20,7 @@ class BurgerWidget extends StatelessWidget {
               Image(
                 width: ConstSizes.width(8),
                 fit: BoxFit.fill,
-                image: const AssetImage(IconAssets.burgercha),
+                image: const AssetImage(IconAssets.burger),
               ),
               Container(
                 margin: const EdgeInsets.only(left: 15, right: 5),

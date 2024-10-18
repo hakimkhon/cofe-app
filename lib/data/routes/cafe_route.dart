@@ -1,6 +1,8 @@
 import 'package:cafe/presentation/screens/about/about_page.dart';
 import 'package:cafe/presentation/screens/auth/confirm_page.dart';
 import 'package:cafe/presentation/screens/auth/register_page.dart';
+import 'package:cafe/presentation/screens/bookings/booking_page.dart';
+import 'package:cafe/presentation/screens/bookings/order_delivery_page.dart';
 import 'package:cafe/presentation/screens/filials/detail_filial_page.dart';
 import 'package:cafe/presentation/screens/filials/filials_page.dart';
 import 'package:cafe/presentation/screens/home/home_page.dart';
@@ -17,6 +19,8 @@ class CafeRouteNames {
   static const String about = '/about';
   static const String news = '/news';
   static const String filials = '/filials';
+  static const String booking = '/booking';
+  static const String orderDelivery = '/orderDelivery';
   static const String profile = '/profile';
   static const String detailFilial = '/detailFilial';
 }
@@ -35,6 +39,10 @@ class CafeRoute {
         return MaterialPageRoute(builder: (context) => const RegisterPage());
       case CafeRouteNames.menu:
         return MaterialPageRoute(builder: (context) => const BurgerMenu());
+      case CafeRouteNames.booking:
+        return MaterialPageRoute(builder: (context) => const BookingPage());
+      case CafeRouteNames.orderDelivery:
+        return MaterialPageRoute(builder: (context) => const OrderDeliveryPage());
       case CafeRouteNames.news:
         return MaterialPageRoute(builder: (context) => const NewsPage());
       case CafeRouteNames.about:

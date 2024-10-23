@@ -1,6 +1,7 @@
 import 'package:cafe/presentation/core/constant/colors.dart';
 import 'package:cafe/presentation/core/constant/sizes.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:zoom_tap_animation/zoom_tap_animation.dart';
 
 //bu button savatga qo'shish button uchun munjallangan, boshqa vazifalarni bajarish uchun text va bosganda nima qilishni berib ketish kerak
@@ -32,14 +33,14 @@ class CustomButton extends StatelessWidget {
         height: ConstSizes.height(5),
         decoration: BoxDecoration(
           border: Border.all(color: borderColor),
-          borderRadius: BorderRadius.circular(borderRadius),
+          borderRadius: BorderRadius.circular(borderRadius).r,
           color: color,
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10.0),
+              padding: EdgeInsets.symmetric(horizontal: 10.w),
               child: FittedBox(
                 fit: BoxFit.fitWidth,
                 child: Text(

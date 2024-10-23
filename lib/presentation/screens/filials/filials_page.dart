@@ -7,6 +7,7 @@ import 'package:cafe/presentation/screens/home/widgets/header_widget.dart';
 import 'package:cafe/presentation/widgets/custom_text_widget.dart';
 import 'package:cafe/presentation/widgets/my_vertical_divider_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:zoom_tap_animation/zoom_tap_animation.dart';
 
 class FilialsPage extends StatelessWidget {
@@ -17,26 +18,29 @@ class FilialsPage extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+          padding: EdgeInsets.symmetric(horizontal: 15.w),
           child: Column(
             children: [
               const HeaderWidget(),
               const MyVerticalDividerText(data: "filiallar"),
               SizedBox(
                 width: double.infinity,
-                height: 750,
+                height: ConstSizes.screenHight() -
+                    ConstSizes.statusBarHight() -
+                    ConstSizes.screenHight() * 0.13,
                 child: ListView.builder(
                   itemCount: MockData.filials.length,
                   itemBuilder: (BuildContext context, int index) {
                     return Padding(
-                      padding: EdgeInsets.symmetric(vertical: ConstSizes.height(1)),
+                      padding:
+                          EdgeInsets.symmetric(vertical: ConstSizes.height(1)),
                       child: Card(
                         color: AppColors.secondaryColor,
                         child: Column(
                           children: [
                             Container(
                               width: double.infinity,
-                              height: 180,
+                              height: 150.h,
                               decoration: const BoxDecoration(
                                 borderRadius: BorderRadius.only(
                                   topLeft: Radius.circular(16),
@@ -54,10 +58,12 @@ class FilialsPage extends StatelessWidget {
                                 horizontal: 16,
                               ),
                               child: Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
                                   Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceBetween,
                                     children: [
@@ -71,8 +77,8 @@ class FilialsPage extends StatelessWidget {
                                             color: AppColors.color254,
                                           ),
                                           MyText(
-                                            data:
-                                                MockData.filials[index].sityName,
+                                            data: MockData
+                                                .filials[index].sityName,
                                             size: 21,
                                             color: AppColors.color108,
                                           ),

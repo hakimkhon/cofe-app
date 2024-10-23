@@ -6,7 +6,6 @@ import 'package:zoom_tap_animation/zoom_tap_animation.dart';
 
 class IncrementAmountWidget extends StatefulWidget {
   const IncrementAmountWidget({super.key});
-  // final Color btnCollor;
 
   @override
   State<IncrementAmountWidget> createState() => _IncrementAmountWidgetState();

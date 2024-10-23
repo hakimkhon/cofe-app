@@ -1,6 +1,7 @@
 import 'package:cafe/presentation/core/constant/colors.dart';
 import 'package:cafe/presentation/core/resource/assets.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class MyText extends StatelessWidget {
   const MyText({
@@ -37,7 +38,7 @@ class MyText extends StatelessWidget {
       child: Text(
         data,
         style: TextStyle(
-          fontSize: size,
+          fontSize: size.sp,
           color: color,
           fontWeight: fontWeight,
           fontFamily: fontFamily,

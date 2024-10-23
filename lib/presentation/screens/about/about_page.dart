@@ -1,11 +1,10 @@
-import 'package:cafe/data/routes/cafe_route.dart';
 import 'package:cafe/presentation/core/constant/colors.dart';
 import 'package:cafe/presentation/core/resource/assets.dart';
 import 'package:cafe/presentation/screens/home/widgets/header_widget.dart';
 import 'package:cafe/presentation/widgets/custom_text_widget.dart';
 import 'package:cafe/presentation/widgets/my_vertical_divider_text.dart';
 import 'package:flutter/material.dart';
-import 'package:zoom_tap_animation/zoom_tap_animation.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AboutPage extends StatelessWidget {
   const AboutPage({super.key});
@@ -45,23 +44,13 @@ class AboutPage extends StatelessWidget {
               mySpamText("Ish vaqti", "09:00 - 18:00"),
               mySpamText("Telefon raqam", "+998 90 776-07-05"),
               mySpamText("Email", "wellfood@gmail.com"),
-              ZoomTapAnimation(
-                onTap: () {
-                  Navigator.pushNamed(context, CafeRouteNames.profile);
-                },
-                child: const MyVerticalDividerText(
-                    data: "asoschi", textSize: 21, top: 10, bottom: 10),
-              ),
-              ZoomTapAnimation(
-                onTap: () {
-                  Navigator.pushNamed(context, CafeRouteNames.profile);
-                },
-                child: const MyText(
-                  data: "KHATAMOV NURIDDIN tomonidan 2024-yil asos solingan",
-                  color: AppColors.color108,
-                  size: 20,
-                  bottom: 20,
-                ),
+              const MyVerticalDividerText(
+                  data: "asoschi", textSize: 21, top: 10, bottom: 10),
+              const MyText(
+                data: "KHATAMOV NURIDDIN tomonidan 2024-yil asos solingan",
+                color: AppColors.color108,
+                size: 20,
+                bottom: 20,
               ),
               Container(
                 width: double.infinity,
@@ -85,23 +74,23 @@ class AboutPage extends StatelessWidget {
 
   mySpamText(String key, String value) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 6),
+      padding: EdgeInsets.symmetric(vertical: 6.w),
       child: RichText(
         text: TextSpan(
           children: [
             TextSpan(
               text: "$key: ",
-              style: const TextStyle(
+              style: TextStyle(
                 fontWeight: FontWeight.w300,
                 color: AppColors.color108,
-                fontSize: 16,
+                fontSize: 15.sp,
               ),
             ),
             TextSpan(
               text: "$value ",
-              style: const TextStyle(
+              style: TextStyle(
                 fontWeight: FontWeight.w400,
-                fontSize: 16,
+                fontSize: 15.sp,
                 color: AppColors.color79,
               ),
             ),

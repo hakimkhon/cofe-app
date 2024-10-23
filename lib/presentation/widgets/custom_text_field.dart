@@ -1,6 +1,7 @@
 import 'package:cafe/presentation/core/constant/colors.dart';
 import 'package:cafe/presentation/core/constant/sizes.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CustomTextFieldWidget extends StatelessWidget {
   const CustomTextFieldWidget({
@@ -13,6 +14,8 @@ class CustomTextFieldWidget extends StatelessWidget {
     this.leftPadding = 45,
     this.hindSize = 20,
     this.textSize = 20,
+    this.iconSize = 22,
+    this.positionHight = 15,
   });
 
   final String hintText;
@@ -23,6 +26,8 @@ class CustomTextFieldWidget extends StatelessWidget {
   final double leftPadding;
   final double hindSize;
   final double textSize;
+  final double iconSize;
+  final double positionHight;
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +36,7 @@ class CustomTextFieldWidget extends StatelessWidget {
         TextField(
           controller: controller,
           keyboardType: type,
-          style: TextStyle(fontSize: textSize),
+          style: TextStyle(fontSize: textSize.sp),
           decoration: InputDecoration(
             enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10),
@@ -40,9 +45,9 @@ class CustomTextFieldWidget extends StatelessWidget {
               ),
             ),
             contentPadding: EdgeInsets.only(
-              top: verticalPadding,
-              bottom: verticalPadding,
-              left: leftPadding,
+              top: verticalPadding.h,
+              bottom: verticalPadding.h,
+              left: leftPadding.w,
             ),
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10),
@@ -50,7 +55,7 @@ class CustomTextFieldWidget extends StatelessWidget {
             ),
             hintText: hintText,
             hintStyle: TextStyle(
-              fontSize: hindSize,
+              fontSize: hindSize.sp,
               color: AppColors.color108,
               fontWeight: FontWeight.w400,
             ),
@@ -59,11 +64,11 @@ class CustomTextFieldWidget extends StatelessWidget {
         Visibility(
           visible: leftPadding == 45,
           child: Positioned(
-            top: ConstSizes.height(1.7),
+            top: positionHight,
             left: ConstSizes.width(2.8),
             child: Icon(
               icon,
-              size: 22,
+              size: iconSize.r,
               color: AppColors.color108,
             ),
           ),

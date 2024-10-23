@@ -80,6 +80,13 @@ class MockData {
       data: "05.10.2024",
     ),
     NewsModel(
+      title: "Lavash endilikda arzonladi",
+      subTitle:
+          "Endi pitsani 1/5 qismini atigi 15 ming so’mga harid qilishingiz mumkin!",
+      image: ImageAssets.lavash,
+      data: "18.10.2024",
+    ),
+    NewsModel(
       title: "KFC endilikda arzonladi",
       subTitle:
           "Endi 0.5 kilogram KFC’ni atigi 15 ming so’mga harid qilishingiz mumkin!",

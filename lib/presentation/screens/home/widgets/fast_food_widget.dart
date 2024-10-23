@@ -3,7 +3,7 @@ import 'package:cafe/presentation/core/constant/colors.dart';
 import 'package:cafe/presentation/core/constant/sizes.dart';
 import 'package:cafe/presentation/widgets/custom_text_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:zoom_tap_animation/zoom_tap_animation.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class FastFoodWidget extends StatelessWidget {
   const FastFoodWidget({super.key});
@@ -12,26 +12,34 @@ class FastFoodWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       width: double.infinity,
-      child: Wrap(
-        alignment: WrapAlignment.spaceBetween,
-        children: [
-          for (int i = 0; i < MockData.fastFood.length; i++)
-            ZoomTapAnimation(
-              child: foods(
-                MockData.fastFood[i].title,
-                MockData.fastFood[i].icon,
-                i == 0 ? AppColors.primaryColor : Colors.black.withOpacity(0.04),
-                i == 0 ? AppColors.secondaryColor : AppColors.color108,
-              ),
-            ),
-        ],
+      height: 400.w,
+      child: GridView.count(
+        primary: false,
+        mainAxisSpacing: 40,
+        crossAxisSpacing: 50,
+        crossAxisCount: 2,
+        padding: EdgeInsets.zero,
+        children: List.generate(
+          MockData.fastFood.length,
+          (index) {
+            return foods(
+              MockData.fastFood[index].title,
+              MockData.fastFood[index].icon,
+              index == 0
+                  ? AppColors.primaryColor
+                  : Colors.black.withOpacity(0.04),
+              index == 0 ? AppColors.secondaryColor : AppColors.color108,
+            );
+          },
+        ),
       ),
     );
   }
+
   foods(String title, String icon, Color color, Color textColor) {
     return Container(
-      width: ConstSizes.width(44),
-      height: ConstSizes.height(4),
+      width: 200,
+      height: 10,
       margin: const EdgeInsets.symmetric(vertical: 8),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(16),

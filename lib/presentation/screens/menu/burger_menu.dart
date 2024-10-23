@@ -82,6 +82,21 @@ class BurgerMenu extends StatelessWidget {
                   color: AppColors.color79,
                 ),
               ),
+              TextButton(
+                onPressed: () {
+                   Navigator.pushNamedAndRemoveUntil(
+                    context,
+                    CafeRouteNames.profile,
+                    (predicate) => false,
+                  );
+                },
+                child: const MyText(
+                  data: "- Mening profilim",
+                  size: 26,
+                  left: 16,
+                  color: AppColors.color79,
+                ),
+              ),
             ],
           ),
         ),

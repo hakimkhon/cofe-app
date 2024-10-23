@@ -1,9 +1,11 @@
 import 'package:cafe/data/mock/mock_data.dart';
 import 'package:cafe/presentation/core/constant/colors.dart';
+import 'package:cafe/presentation/core/constant/sizes.dart';
 import 'package:cafe/presentation/core/resource/assets.dart';
 import 'package:cafe/presentation/screens/home/widgets/header_widget.dart';
 import 'package:cafe/presentation/widgets/custom_text_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class DetailFilialPage extends StatelessWidget {
   const DetailFilialPage({super.key});
@@ -13,56 +15,58 @@ class DetailFilialPage extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.symmetric(
-            vertical: 20,
-            horizontal: 16,
-          ),
+          padding: EdgeInsets.symmetric(horizontal: 15.w, vertical: 0),
           child: Column(
             children: [
               const HeaderWidget(),
-              Padding(
-                padding: const EdgeInsets.only(
-                  top: 40,
-                  bottom: 8,
-                ),
+              Container(
+                alignment: Alignment.bottomCenter,
+                height: ConstSizes.screenHight() * 0.08,
                 child: Row(
                   children: [
                     Container(
-                      margin: const EdgeInsets.only(right: 5),
-                      height: 36,
-                      width: 3,
+                      margin: EdgeInsets.only(right: 5.w),
+                      height: 28.w,
+                      width: 2.w,
                       color: AppColors.color254,
                     ),
                     MyText(
                       data: MockData.filials[0].sityName,
-                      size: 21,
+                      size: 24.sp,
                       color: AppColors.color108,
                     ),
                   ],
                 ),
               ),
-              Row(
-                children: [
-                  const Icon(Icons.access_time_outlined),
-                  MyText(
-                    data: MockData.filials[0].workingTime,
-                    color: AppColors.color108,
-                    size: 20,
-                    left: 6,
-                  ),
-                ],
+              SizedBox(
+                height: ConstSizes.screenHight() * 0.03,
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Icon(Icons.access_time_outlined, size: 16.sp),
+                    MyText(
+                      data: MockData.filials[0].workingTime,
+                      color: AppColors.color108,
+                      size: 14.sp,
+                      left: 4.w,
+                    ),
+                  ],
+                ),
               ),
               Container(
                 width: double.infinity,
-                height: 700,
-                margin: const EdgeInsets.only(top: 16),
+                height: ConstSizes.screenHight() -
+                    ConstSizes.statusBarHight() -
+                    ConstSizes.screenHight() * 0.19,
+                margin: EdgeInsets.only(top: 10.w),
                 decoration: BoxDecoration(
+                  color: Colors.amberAccent,
                   borderRadius: BorderRadius.circular(15),
                   image: const DecorationImage(
                     image: AssetImage(
                       ImageAssets.detailFilial,
                     ),
-                    fit: BoxFit.fill
+                    fit: BoxFit.fill,
                   ),
                 ),
               )

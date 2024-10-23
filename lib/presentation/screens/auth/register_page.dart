@@ -5,6 +5,7 @@ import 'package:cafe/presentation/widgets/custom_button.dart';
 import 'package:cafe/presentation/widgets/custom_text_field.dart';
 import 'package:cafe/presentation/widgets/custom_text_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class RegisterPage extends StatelessWidget {
   const RegisterPage({super.key});
@@ -17,7 +18,7 @@ class RegisterPage extends StatelessWidget {
       body: SafeArea(
         bottom: false,
         child: Container(
-          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
+          padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 20.h),
           color: AppColors.secondaryColor,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -27,13 +28,13 @@ class RegisterPage extends StatelessWidget {
               // enter date
               SizedBox(
                 width: double.infinity,
-                height: 150,
+                height: 150.h,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const MyText(
+                    MyText(
                       data: "Ma’lumotlaringizni kiriting",
-                      size: 28,
+                      size: 28.sp,
                       color: AppColors.color91,
                     ),
                     const MyText(

@@ -3,7 +3,7 @@ import 'package:cafe/presentation/core/constant/colors.dart';
 import 'package:cafe/presentation/core/constant/sizes.dart';
 import 'package:cafe/presentation/widgets/custom_text_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:zoom_tap_animation/zoom_tap_animation.dart';
 
 class FastFoodWidget extends StatelessWidget {
   const FastFoodWidget({super.key});
@@ -11,36 +11,36 @@ class FastFoodWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: double.infinity,
-      height: 400.w,
-      child: GridView.count(
-        primary: false,
-        mainAxisSpacing: 40,
-        crossAxisSpacing: 50,
-        crossAxisCount: 2,
-        padding: EdgeInsets.zero,
-        children: List.generate(
-          MockData.fastFood.length,
-          (index) {
-            return foods(
-              MockData.fastFood[index].title,
-              MockData.fastFood[index].icon,
-              index == 0
-                  ? AppColors.primaryColor
-                  : Colors.black.withOpacity(0.04),
-              index == 0 ? AppColors.secondaryColor : AppColors.color108,
+        width: double.infinity,
+        child: GridView.builder(
+          itemCount: MockData.fastFood.length,
+          shrinkWrap: true,
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 2,
+            crossAxisSpacing: 20,
+            mainAxisSpacing: 15,
+            childAspectRatio: 4.5,
+          ),
+          itemBuilder: (context, index) {
+            return ZoomTapAnimation(
+              child: foods(
+                MockData.fastFood[index].title,
+                MockData.fastFood[index].icon,
+                index == 0
+                    ? AppColors.primaryColor
+                    : Colors.black.withOpacity(0.04),
+                index == 0 ? AppColors.secondaryColor : AppColors.color108,
+              ),
             );
           },
-        ),
-      ),
-    );
+        ));
   }
 
   foods(String title, String icon, Color color, Color textColor) {
     return Container(
-      width: 200,
+      width: 120,
       height: 10,
-      margin: const EdgeInsets.symmetric(vertical: 8),
+      // margin: const EdgeInsets.symmetric(vertical: 8),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(16),
         color: color,

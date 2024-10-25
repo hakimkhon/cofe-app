@@ -11,11 +11,11 @@ class CustomTextFieldWidget extends StatelessWidget {
     this.type = TextInputType.phone,
     this.icon = Icons.phone,
     this.verticalPadding = 12,
-    this.leftPadding = 45,
-    this.hindSize = 20,
-    this.textSize = 20,
-    this.iconSize = 22,
-    this.positionHight = 15,
+    this.leftPadding = 40,
+    this.hindSize = 18,
+    this.textSize = 18,
+    this.iconSize = 20,
+    this.positionHight = 14,
   });
 
   final String hintText;
@@ -45,8 +45,8 @@ class CustomTextFieldWidget extends StatelessWidget {
               ),
             ),
             contentPadding: EdgeInsets.only(
-              top: verticalPadding.h,
-              bottom: verticalPadding.h,
+              top: verticalPadding.w,
+              bottom: verticalPadding.w,
               left: leftPadding.w,
             ),
             focusedBorder: OutlineInputBorder(
@@ -62,9 +62,9 @@ class CustomTextFieldWidget extends StatelessWidget {
           ),
         ),
         Visibility(
-          visible: leftPadding == 45,
+          visible: leftPadding == 40,
           child: Positioned(
-            top: positionHight,
+            top: positionHight.w,
             left: ConstSizes.width(2.8),
             child: Icon(
               icon,

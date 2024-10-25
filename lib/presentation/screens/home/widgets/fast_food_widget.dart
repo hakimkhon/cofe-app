@@ -13,6 +13,7 @@ class FastFoodWidget extends StatelessWidget {
     return SizedBox(
         width: double.infinity,
         child: GridView.builder(
+          controller: ScrollController(), // Scrol bo'lmaslik uchun
           itemCount: MockData.fastFood.length,
           shrinkWrap: true,
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(

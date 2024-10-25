@@ -26,23 +26,24 @@ class CafeRouteNames {
 }
 
 class CafeRoute {
-
   static final CafeRoute _instance = CafeRoute._init();
   static CafeRoute get instance => _instance;
   CafeRoute._init();
 
   static Route generateRoute(RouteSettings settings) {
+    var args = settings.arguments;
     switch (settings.name) {
       case CafeRouteNames.home:
         return MaterialPageRoute(builder: (context) => const HomePage());
       case CafeRouteNames.register:
-        return MaterialPageRoute(builder: (context) => const RegisterPage());
+        return MaterialPageRoute(builder: (context) => RegisterPage());
       case CafeRouteNames.menu:
         return MaterialPageRoute(builder: (context) => const BurgerMenu());
       case CafeRouteNames.booking:
         return MaterialPageRoute(builder: (context) => const BookingPage());
       case CafeRouteNames.orderDelivery:
-        return MaterialPageRoute(builder: (context) => const OrderDeliveryPage());
+        return MaterialPageRoute(
+            builder: (context) => const OrderDeliveryPage());
       case CafeRouteNames.news:
         return MaterialPageRoute(builder: (context) => const NewsPage());
       case CafeRouteNames.about:
@@ -50,9 +51,13 @@ class CafeRoute {
       case CafeRouteNames.filials:
         return MaterialPageRoute(builder: (context) => const FilialsPage());
       case CafeRouteNames.detailFilial:
-        return MaterialPageRoute(builder: (context) => const DetailFilialPage());
+        return MaterialPageRoute(
+            builder: (context) => const DetailFilialPage());
       case CafeRouteNames.confirm:
-        return MaterialPageRoute(builder: (context) => const ConfirmPage());
+        return MaterialPageRoute(
+            builder: (context) => ConfirmPage(
+                  phoneNumber: args as String,
+                ));
       case CafeRouteNames.profile:
         return MaterialPageRoute(builder: (context) => const ProfilePage());
       default:

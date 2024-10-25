@@ -87,23 +87,28 @@ class KfcWidget extends StatelessWidget {
             },
           ),
           Positioned(
-            bottom: 2.w,
-            left: ConstSizes.screenWidth() / 2 -
-                6.w * MockData.news.length / 2 -
-                10.w * MockData.news.length,
-            child: SmoothPageIndicator(
-              controller: pageController,
-              count: MockData.news.length,
-              effect: ExpandingDotsEffect(
-                dotColor: AppColors.color254,
-                activeDotColor: AppColors.primaryColor,
-                // dotColor: const Color.fromRGBO(0, 0, 0, 0.05),
-                // activeDotColor: const Color.fromRGBO(0, 0, 0, 0.07),
-                dotHeight: 8.w,
-                dotWidth: 10.w,
-                spacing: 6.w,
+            bottom: 0,
+            left: -16.w,
+            //Container ishlatishdan maqsad indekatorni ekranni o'rtasiga joylash
+            child: Container(
+              alignment: Alignment.center,
+              width: ConstSizes.screenWidth(),
+              height: 20.w,
+              child: SmoothPageIndicator(
+                controller: pageController,
+                count: MockData.news.length,
+                effect: ExpandingDotsEffect(
+                  dotColor: AppColors.color254,
+                  activeDotColor: AppColors.primaryColor,
+                  // dotColor: const Color.fromRGBO(0, 0, 0, 0.05),
+                  // activeDotColor: const Color.fromRGBO(0, 0, 0, 0.07),
+                  dotHeight: 8.w,
+                  dotWidth: 10.w,
+                  spacing: 6.w,
+                ),
               ),
-            ),
+            
+              ),
           ),
         ],
       ),

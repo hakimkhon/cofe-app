@@ -106,46 +106,68 @@ class MockData {
     FastFoodModel(
       title: "Burger",
       icon: IconAssets.burger,
+      image: ImageAssets.burger,
+      price: "24 000",
     ),
     FastFoodModel(
       title: "Donar",
       icon: IconAssets.donar,
+      image: ImageAssets.donar,
+      price: "19 000",
     ),
     FastFoodModel(
       title: "Garnir",
       icon: IconAssets.garnir,
+      image: ImageAssets.garnir,
+      price: "24 000",
     ),
     FastFoodModel(
       title: "Kombo",
       icon: IconAssets.kombo,
+      image: ImageAssets.kombo,
+      price: "18 000",
     ),
     FastFoodModel(
       title: "Lavash",
       icon: IconAssets.lavash,
+      image: ImageAssets.lavash,
+      price: "24 000",
     ),
     FastFoodModel(
       title: "Sendvich",
       icon: IconAssets.sendvich,
+      image: ImageAssets.sendvich,
+      price: "27 000",
     ),
     FastFoodModel(
       title: "Sous",
       icon: IconAssets.sous,
+      image: ImageAssets.sous,
+      price: "25 000",
     ),
     FastFoodModel(
       title: "Salat",
       icon: IconAssets.salat,
+      image: ImageAssets.salatlar,
+      price: "24 000",
     ),
     FastFoodModel(
       title: "Pitsa",
       icon: IconAssets.pitsa,
+      image: ImageAssets.pitsa,
+      price: "21 000",
     ),
     FastFoodModel(
       title: "Qo'shimcha",
       icon: IconAssets.qoshimcha,
+      image: ImageAssets.qoshimcha,
+      price: "23 000",
     ),
     FastFoodModel(
       title: "Ichimlik",
       icon: IconAssets.ichimlik,
+      image: ImageAssets.ichimlik,
+      price: "24 000",
     ),
   ];
 }

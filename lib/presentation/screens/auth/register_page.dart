@@ -10,96 +10,69 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class RegisterPage extends StatelessWidget {
-  RegisterPage({super.key});
-
-  TextEditingController textEditingController = TextEditingController();
+  const RegisterPage({super.key});
 
   @override
   Widget build(BuildContext context) {
+    TextEditingController textEditingController = TextEditingController();
     return Scaffold(
-      body: _buildUI(),
-    );
-  }
-
-  Widget _buildUI() {
-    return SafeArea(
-      bottom: false,
-      child: SizedBox(
-        child: Padding(
-          padding: EdgeInsets.symmetric(vertical: 20.w, horizontal: 15.w),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              _header(),
-              _body(),
-              _footer(),
-            ],
+      body: SafeArea(
+        bottom: false,
+        child: SizedBox(
+          child: Padding(
+            padding: EdgeInsets.symmetric(vertical: 20.w, horizontal: 15.w),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Image.asset(IconAssets.logo),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    MyText(
+                      data: "Ma’lumotlaringizni kiriting",
+                      size: 24.sp,
+                      color: AppColors.color91,
+                    ),
+                    MyText(
+                      data:
+                          "Qulayligingiz uchun ma’lumotlaringizni saqlab qo’yamiz",
+                      size: 14.sp,
+                      fontWeight: FontWeight.w300,
+                      color: AppColors.color119,
+                    ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        MyText(
+                          data: "Telefon raqamingizni kiriting:",
+                          size: 12.sp,
+                          fontWeight: FontWeight.w300,
+                          color: AppColors.color108,
+                          bottom: 4.w,
+                          top: 6.w,
+                        ),
+                        CustomTextFieldWidget(
+                          hintText: "Telefon raqamimgiz...",
+                          controller: textEditingController,
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+                CustomButton(
+                  text: "Tasdiqlash",
+                  onTap: () {
+                    ApiService apiService = ApiService();
+                    apiService.sendSMSCode(
+                      phoneNumber: textEditingController.text,
+                    );
+                  },
+                ),
+              ],
+            ),
           ),
         ),
       ),
-    );
-  }
-
-  Widget _header() {
-    return Image.asset(IconAssets.logo);
-  }
-
-  Widget _body() {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        _title(),
-        _subTitle(),
-        _inputDate(),
-      ],
-    );
-  }
-
-  Widget _title() {
-    return MyText(
-      data: "Ma’lumotlaringizni kiriting",
-      size: 24.sp,
-      color: AppColors.color91,
-    );
-  }
-
-  Widget _subTitle() {
-    return MyText(
-      data: "Qulayligingiz uchun ma’lumotlaringizni saqlab qo’yamiz",
-      size: 14.sp,
-      fontWeight: FontWeight.w300,
-      color: AppColors.color119,
-    );
-  }
-
-  Widget _inputDate() {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        MyText(
-          data: "Telefon raqamingizni kiriting:",
-          size: 12.sp,
-          fontWeight: FontWeight.w300,
-          color: AppColors.color108,
-          bottom: 4.w,
-          top: 6.w,
-        ),
-        CustomTextFieldWidget(
-          hintText: "Telefon raqamimgiz...",
-          controller: textEditingController,
-        ),
-      ],
-    );
-  }
-
-  Widget _footer() {
-    return CustomButton(
-      text: "Tasdiqlash",
-      onTap: () {
-        ApiService apiService = ApiService();
-           apiService.sendSMSCode(phoneNumber: textEditingController.text);
-        
-      },
     );
   }
 }

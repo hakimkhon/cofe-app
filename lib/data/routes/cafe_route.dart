@@ -36,7 +36,7 @@ class CafeRoute {
       case CafeRouteNames.home:
         return MaterialPageRoute(builder: (context) => const HomePage());
       case CafeRouteNames.register:
-        return MaterialPageRoute(builder: (context) => RegisterPage());
+        return MaterialPageRoute(builder: (context) => const RegisterPage());
       case CafeRouteNames.menu:
         return MaterialPageRoute(builder: (context) => const BurgerMenu());
       case CafeRouteNames.booking:

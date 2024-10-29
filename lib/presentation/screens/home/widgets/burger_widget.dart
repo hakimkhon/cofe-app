@@ -1,13 +1,22 @@
 import 'package:cafe/presentation/core/constant/colors.dart';
 import 'package:cafe/presentation/core/constant/sizes.dart';
-import 'package:cafe/presentation/core/resource/assets.dart';
+// import 'package:cafe/presentation/core/resource/assets.dart';
 import 'package:cafe/presentation/widgets/custom_button.dart';
 import 'package:cafe/presentation/widgets/custom_text_widget.dart';
 import 'package:cafe/presentation/widgets/increment_amount_widget.dart';
 import 'package:flutter/material.dart';
 
 class BurgerWidget extends StatelessWidget {
-  const BurgerWidget({super.key});
+  const BurgerWidget({
+    super.key,
+    required this.title,
+    required this.image,
+    required this.price,
+  });
+  final String title;
+  final String image;
+  final String price;
+  // final String title;
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +29,7 @@ class BurgerWidget extends StatelessWidget {
               Image(
                 width: ConstSizes.width(8),
                 fit: BoxFit.fill,
-                image: const AssetImage(IconAssets.burger),
+                image: AssetImage(image),
               ),
               Container(
                 margin: const EdgeInsets.only(left: 15, right: 5),
@@ -28,8 +37,8 @@ class BurgerWidget extends StatelessWidget {
                 width: 3,
                 color: AppColors.color254,
               ),
-              const MyText(
-                data: "Burger",
+              MyText(
+                data: title,
                 size: 21,
                 color: AppColors.color108,
               ),
@@ -46,18 +55,18 @@ class BurgerWidget extends StatelessWidget {
             ),
             child: Column(
               children: [
-                const Image(
+                Image(
                   image: AssetImage(
-                    ImageAssets.burger,
+                    image,
                   ),
                 ),
-                const MyText(
-                  data: "Burger",
+                 MyText(
+                  data: title,
                   size: 28,
                   color: AppColors.color43,
                 ),
-                const MyText(
-                  data: "24 000 so'm",
+                MyText(
+                  data: "$price so'm",
                   size: 20,
                   color: AppColors.color169,
                   bottom: 15,
@@ -70,11 +79,11 @@ class BurgerWidget extends StatelessWidget {
         const SizedBox(
           height: 20,
         ),
-        const Card(
+        Card(
           // shadowColor: const Color.fromRGBO(0, 0, 0, 0.05),
           color: AppColors.secondaryColor,
           child: Padding(
-            padding: EdgeInsets.symmetric(
+            padding: const EdgeInsets.symmetric(
               horizontal: 30.0,
               vertical: 25,
             ),
@@ -82,21 +91,21 @@ class BurgerWidget extends StatelessWidget {
               children: [
                 Image(
                   image: AssetImage(
-                    ImageAssets.burger,
+                    image,
                   ),
                 ),
                 MyText(
-                  data: "Burger",
+                  data: title,
                   size: 28,
                   color: AppColors.color43,
                 ),
                 MyText(
-                  data: "24 000 so'm",
+                  data: "$price so'm",
                   size: 20,
                   color: AppColors.color169,
                   bottom: 15,
                 ),
-                IncrementAmountWidget(),
+                const IncrementAmountWidget(),
               ],
             ),
           ),

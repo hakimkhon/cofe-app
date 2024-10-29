@@ -4,14 +4,13 @@ import 'package:dio/dio.dart';
 import 'package:flutter/widgets.dart';
 
 class ApiService {
-  Dio dio = Dio();
+  final Dio _dio = Dio();
 
   ApiService() {
-    
-    dio.options.baseUrl = "https://admin.axadjonovsardorbek.uz";
-    dio.options.connectTimeout = const Duration(seconds: 10);
+    _dio.options.baseUrl = "https://admin.axadjonovsardorbek.uz";
+    _dio.options.connectTimeout = const Duration(seconds: 10);
 
-    dio.interceptors.add(InterceptorsWrapper(
+    _dio.interceptors.add(InterceptorsWrapper(
       onError: (error, handler) {
         debugPrint("API'da error chiqdi!");
         if (error.response != null) {
@@ -35,11 +34,30 @@ class ApiService {
 
   Future<void> sendSMSCode({required String phoneNumber}) async {
     try {
-      await dio.post("/auth/sms/register/phone", data: {"phone": phoneNumber});
+      await _dio.post("/auth/sms/register/phone", data: {"phone": phoneNumber});
       NavigationService.instance.navigateMyScreen(
           routeName: CafeRouteNames.confirm, arguments: phoneNumber);
     } catch (e) {
       debugPrint("On catch ERROR: $e");
     }
   }
+
+  Future<void> checkSMSCode({
+    required String phoneNumber,
+    required String smsCod,
+  }) async {
+    //POST
+    try {
+      await _dio.post("/auth/user/register", data: {
+        "phone": phoneNumber,
+        "confirmation_code": smsCod,
+      });
+      NavigationService.instance.navigateMyScreen(
+        routeName: CafeRouteNames.home,
+        arguments: phoneNumber,
+      );
+    } catch (e) {
+      debugPrint("On catch ERROR: $e");
+    }
+  }  
 }

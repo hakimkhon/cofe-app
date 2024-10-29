@@ -1,10 +1,9 @@
 import 'package:cafe/presentation/core/constant/colors.dart';
-import 'package:cafe/presentation/core/constant/sizes.dart';
-// import 'package:cafe/presentation/core/resource/assets.dart';
 import 'package:cafe/presentation/widgets/custom_button.dart';
 import 'package:cafe/presentation/widgets/custom_text_widget.dart';
 import 'package:cafe/presentation/widgets/increment_amount_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class BurgerWidget extends StatelessWidget {
   const BurgerWidget({
@@ -23,23 +22,23 @@ class BurgerWidget extends StatelessWidget {
     return Column(
       children: [
         Padding(
-          padding: const EdgeInsets.only(top: 30, bottom: 20),
+          padding: EdgeInsets.only(top: 30.w, bottom: 20.w),
           child: Row(
             children: [
               Image(
-                width: ConstSizes.width(8),
+                width: 32.w,
                 fit: BoxFit.fill,
                 image: AssetImage(image),
               ),
               Container(
-                margin: const EdgeInsets.only(left: 15, right: 5),
-                height: 36,
-                width: 3,
+                margin: EdgeInsets.only(left: 10.w, right: 5.w),
+                height: 36.w,
+                width: 3.w,
                 color: AppColors.color254,
               ),
               MyText(
                 data: title,
-                size: 21,
+                size: 21.sp,
                 color: AppColors.color108,
               ),
             ],
@@ -49,9 +48,9 @@ class BurgerWidget extends StatelessWidget {
           // shadowColor: const Color.fromRGBO(0, 0, 0, 0.05),
           color: AppColors.secondaryColor,
           child: Padding(
-            padding: const EdgeInsets.symmetric(
-              horizontal: 30.0,
-              vertical: 25,
+            padding: EdgeInsets.symmetric(
+              horizontal: 30.w,
+              vertical: 25.w,
             ),
             child: Column(
               children: [
@@ -59,17 +58,19 @@ class BurgerWidget extends StatelessWidget {
                   image: AssetImage(
                     image,
                   ),
+                  fit: BoxFit.fill,
+                  width: 170.w,
                 ),
-                 MyText(
+                MyText(
                   data: title,
-                  size: 28,
+                  size: 28.sp,
                   color: AppColors.color43,
                 ),
                 MyText(
                   data: "$price so'm",
-                  size: 20,
+                  size: 20.sp,
                   color: AppColors.color169,
-                  bottom: 15,
+                  bottom: 15.w,
                 ),
                 CustomButton(onTap: () {})
               ],
@@ -83,9 +84,9 @@ class BurgerWidget extends StatelessWidget {
           // shadowColor: const Color.fromRGBO(0, 0, 0, 0.05),
           color: AppColors.secondaryColor,
           child: Padding(
-            padding: const EdgeInsets.symmetric(
-              horizontal: 30.0,
-              vertical: 25,
+            padding: EdgeInsets.symmetric(
+              horizontal: 30.w,
+              vertical: 25.w,
             ),
             child: Column(
               children: [
@@ -93,17 +94,19 @@ class BurgerWidget extends StatelessWidget {
                   image: AssetImage(
                     image,
                   ),
+                  fit: BoxFit.fill,
+                  width: 170.w,
                 ),
                 MyText(
                   data: title,
-                  size: 28,
+                  size: 28.sp,
                   color: AppColors.color43,
                 ),
                 MyText(
                   data: "$price so'm",
-                  size: 20,
+                  size: 20.sp,
                   color: AppColors.color169,
-                  bottom: 15,
+                  bottom: 15.w,
                 ),
                 const IncrementAmountWidget(),
               ],

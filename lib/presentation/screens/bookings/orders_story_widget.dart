@@ -7,9 +7,16 @@ import 'package:cafe/presentation/widgets/custom_text_widget.dart';
 import 'package:cafe/presentation/widgets/my_vertical_divider_text.dart';
 import 'package:flutter/material.dart';
 
-class OrdersStoryWidget extends StatelessWidget {
+class OrdersStoryWidget extends StatefulWidget {
   const OrdersStoryWidget({super.key});
 
+  @override
+  State<OrdersStoryWidget> createState() => _OrdersStoryWidgetState();
+}
+
+int index = 0;
+
+class _OrdersStoryWidgetState extends State<OrdersStoryWidget> {
   @override
   Widget build(BuildContext context) {
     List<OrdersModel> orders = MockData.orders;
@@ -27,20 +34,37 @@ class OrdersStoryWidget extends StatelessWidget {
             SizedBox(
               width: ConstSizes.width(45),
               child: CustomButton(
-                onTap: () {},
+                onTap: () {
+                  index = 0;
+                  setState(() {});
+                },
                 text: "Aktiv buyurtmalar",
                 borderRadius: 10,
+                color: index == 0
+                    ? AppColors.primaryColor
+                    : AppColors.secondaryColor,
+                textColor:
+                    index == 0 ? AppColors.secondaryColor : AppColors.color108,
+                borderColor:
+                    index == 0 ? AppColors.primaryColor : AppColors.color108,
               ),
             ),
             SizedBox(
               width: ConstSizes.width(45),
               child: CustomButton(
-                onTap: () {},
+                onTap: () {
+                  index = 1;
+                  setState(() {});
+                },
                 text: "Hammasi",
                 borderRadius: 10,
-                color: AppColors.secondaryColor,
-                textColor: AppColors.color108,
-                borderColor: AppColors.color108,
+                color: index == 1
+                    ? AppColors.primaryColor
+                    : AppColors.secondaryColor,
+                textColor:
+                    index == 1 ? AppColors.secondaryColor : AppColors.color108,
+                borderColor:
+                    index == 1 ? AppColors.primaryColor : AppColors.color108,
               ),
             ),
           ],

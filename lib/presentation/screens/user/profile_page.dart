@@ -8,9 +8,14 @@ import 'package:cafe/presentation/widgets/custom_text_widget.dart';
 import 'package:cafe/presentation/widgets/my_vertical_divider_text.dart';
 import 'package:flutter/material.dart';
 
-class ProfilePage extends StatelessWidget {
+class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
 
+  @override
+  State<ProfilePage> createState() => _ProfilePageState();
+}
+
+class _ProfilePageState extends State<ProfilePage> {
   @override
   Widget build(BuildContext context) {
     TextEditingController nameController = TextEditingController();

@@ -1,4 +1,5 @@
-import 'package:cafe/data/mock/mock_data.dart';
+import 'package:cafe/data/model/news_model.dart';
+import 'package:cafe/data/service/api_service.dart';
 import 'package:cafe/presentation/core/constant/colors.dart';
 import 'package:cafe/presentation/core/constant/sizes.dart';
 import 'package:cafe/presentation/screens/home/widgets/header_widget.dart';
@@ -19,61 +20,73 @@ class NewsPage extends StatelessWidget {
             children: [
               const HeaderWidget(),
               const MyVerticalDividerText(data: "yangiliklar"),
-              SizedBox(
-                width: ConstSizes.width(100),
-                height: ConstSizes.height(80),
-                child: ListView.builder(
-                  itemCount: MockData.news.length,
-                  itemBuilder: (context, index) {
-                    return Padding(
-                      padding:
-                          EdgeInsets.symmetric(vertical: ConstSizes.height(1)),
-                      child: Card(
-                        color: AppColors.secondaryColor,
-                        child: Padding(
-                          padding: EdgeInsets.all(ConstSizes.width(5)),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Container(
-                                width: double.infinity,
-                                height: 190,
-                                alignment: Alignment.bottomLeft,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(10),
-                                  image: DecorationImage(
-                                    fit: BoxFit.fill,
-                                    image: AssetImage(
-                                      MockData.news[index].image,
+              FutureBuilder(
+                  future: ApiService.instance.getNews(),
+                  builder: (contex, AsyncSnapshot<NewsModel?> snapshot) {
+                    return SizedBox(
+                      width: ConstSizes.width(100),
+                      height: ConstSizes.height(80),
+                      child: ListView.builder(
+                        itemCount: snapshot.data?.news?.length,
+                        itemBuilder: (context, index) {
+                          return Padding(
+                            padding: EdgeInsets.symmetric(
+                                vertical: ConstSizes.height(1)),
+                            child: Card(
+                              color: AppColors.secondaryColor,
+                              child: Padding(
+                                padding: EdgeInsets.all(ConstSizes.width(5)),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Container(
+                                      width: double.infinity,
+                                      height: 190,
+                                      alignment: Alignment.bottomLeft,
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(10),
+                                        image: DecorationImage(
+                                          fit: BoxFit.fill,
+                                          image: NetworkImage(snapshot.data
+                                                  ?.news?[index].imageUrl ??
+                                              "https://yuz.uz/imageproxy/1920x/https://yuz.uz/file/news/96432fba0254d5d672bc06f2e4ad611f.jpg"),
+                                        ),
+                                      ),
                                     ),
-                                  ),
+                                    MyText(
+                                      data: snapshot.data?.news?[index].title ?? "Title",
+                                      size: ConstSizes.width(6),
+                                      fontWeight: FontWeight.w700,
+                                      bottom: ConstSizes.height(2),
+                                      top: ConstSizes.height(1),
+                                      color: AppColors.color91,
+                                    ),
+                                    MyText(
+                                        data: snapshot.data?.news?[index].description ?? "Description",
+                                        bottom: ConstSizes.height(1)),
+                                    Row(
+                                      children: [
+                                        const Icon(
+                                          Icons.calendar_today_outlined,
+                                          size: 16,
+                                          color: AppColors.color108,
+                                        ),
+                                        MyText(
+                                          data: snapshot.data?.news?[index].createdAt ?? "2024-10-26 10:16",
+                                          left: ConstSizes.width(2),
+                                          size: 16,
+                                        ),
+                                      ],
+                                    )
+                                  ],
                                 ),
                               ),
-                              MyText(
-                                data: MockData.news[index].title,
-                                size: ConstSizes.width(6),
-                                fontWeight: FontWeight.w700,
-                                bottom: ConstSizes.height(2),
-                                top: ConstSizes.height(1),
-                                color: AppColors.color91,
-                              ),
-                              MyText(data: MockData.news[index].subTitle, bottom: ConstSizes.height(1)),
-                              Row(
-                                children: [
-                                  const Icon(Icons.calendar_today_outlined, size: 16,color: AppColors.color108,),
-                                  MyText(
-                                      data:
-                                          MockData.news[index].data.toString(), left: ConstSizes.width(2), size: 16,),
-                                ],
-                              )
-                            ],
-                          ),
-                        ),
+                            ),
+                          );
+                        },
                       ),
                     );
-                  },
-                ),
-              ),
+                  }),
             ],
           ),
         ),

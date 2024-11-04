@@ -1,5 +1,6 @@
-import 'package:cafe/data/mock/mock_data.dart';
+import 'package:cafe/data/model/news_model.dart';
 import 'package:cafe/data/routes/cafe_route.dart';
+import 'package:cafe/data/service/api_service.dart';
 import 'package:cafe/presentation/core/constant/colors.dart';
 import 'package:cafe/presentation/core/constant/sizes.dart';
 import 'package:cafe/presentation/widgets/custom_text_widget.dart';
@@ -14,104 +15,116 @@ class KfcWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final pageController = PageController();
-    return Container(
-      width: double.infinity,
-      height: 200.w,
-      margin: EdgeInsets.symmetric(vertical: 6.w),
-      child: Stack(
-        children: [
-          PageView.builder(
-            controller: pageController,
-            itemCount: MockData.news.length,
-            itemBuilder: (context, index) {
-              return ZoomTapAnimation(
-                onTap: () {
-                  Navigator.pushNamed(context, CafeRouteNames.news);
-                },
-                child: Stack(
-                  children: [
-                    Container(
-                      width: double.infinity,
-                      height: 180.w,
-                      margin: EdgeInsets.symmetric(horizontal: 2.w),
-                      alignment: Alignment.bottomLeft,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        image: DecorationImage(
-                          fit: BoxFit.fill,
-                          image: AssetImage(
-                            MockData.news[index].image,
-                          ),
-                        ),
-                      ),
-                    ),
-                    Container(
-                      width: double.infinity,
-                      height: 180.w,
-                      margin: EdgeInsets.symmetric(horizontal: 2.w),
-                      padding: const EdgeInsets.all(20),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        gradient: const LinearGradient(
-                          begin: Alignment.topCenter,
-                          end: Alignment.bottomCenter,
-                          colors: [
-                            Color.fromRGBO(217, 217, 217, 0),
-                            Color.fromRGBO(38, 38, 38, 0.67),
-                            Color.fromRGBO(35, 35, 35, 0.78),
-                          ],
-                        ),
-                      ),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        crossAxisAlignment: CrossAxisAlignment.start,
+    return FutureBuilder(
+        future: ApiService.instance.getNews(),
+        builder: (context, AsyncSnapshot<NewsModel?> snap) {
+          if (snap.hasError) {
+            return const Center(
+              child: Text("Xato chiqdi"),
+            );
+          } else if (!snap.hasData) {
+            return const Center(child: CircularProgressIndicator());
+          }
+          return Container(
+            width: double.infinity,
+            height: 200.w,
+            margin: EdgeInsets.symmetric(vertical: 6.w),
+            child: Stack(
+              children: [
+                PageView.builder(
+                  controller: pageController,
+                  itemCount: 3,
+                  itemBuilder: (context, index) {
+                    return ZoomTapAnimation(
+                      onTap: () {
+                        Navigator.pushNamed(context, CafeRouteNames.news);
+                      },
+                      child: Stack(
                         children: [
-                          MyText(
-                            data: MockData.news[index].title,
-                            size: 20,
-                            color: AppColors.secondaryColor,
-                            fontWeight: FontWeight.w800,
+                          Container(
+                            width: double.infinity,
+                            height: 180.w,
+                            margin: EdgeInsets.symmetric(horizontal: 2.w),
+                            alignment: Alignment.bottomLeft,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              image: DecorationImage(
+                                fit: BoxFit.fill,
+                                image: NetworkImage(
+                                  snap.data?.news?[index].imageUrl ??
+                                      "https://yuz.uz/imageproxy/1920x/https://yuz.uz/file/news/96432fba0254d5d672bc06f2e4ad611f.jpg",
+                                ),
+                              ),
+                            ),
                           ),
-                          MyText(
-                            data: MockData.news[index].subTitle,
-                            size: 15,
-                            color: AppColors.secondaryColor,
-                            maxLines: 2,
+                          Container(
+                            width: double.infinity,
+                            height: 180.w,
+                            margin: EdgeInsets.symmetric(horizontal: 2.w),
+                            padding: const EdgeInsets.all(20),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              gradient: const LinearGradient(
+                                begin: Alignment.topCenter,
+                                end: Alignment.bottomCenter,
+                                colors: [
+                                  Color.fromRGBO(217, 217, 217, 0),
+                                  Color.fromRGBO(38, 38, 38, 0.67),
+                                  Color.fromRGBO(35, 35, 35, 0.78),
+                                ],
+                              ),
+                            ),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                MyText(
+                                  data: snap.data?.news?[index].title ?? "KFC",
+                                  size: 20,
+                                  color: AppColors.secondaryColor,
+                                  fontWeight: FontWeight.w800,
+                                ),
+                                MyText(
+                                  data:
+                                      snap.data?.news?[index].description ?? "kfc",
+                                  size: 15,
+                                  color: AppColors.secondaryColor,
+                                  maxLines: 2,
+                                ),
+                              ],
+                            ),
                           ),
                         ],
                       ),
+                    );
+                  },
+                ),
+                Positioned(
+                  bottom: 0,
+                  left: -16.w,
+                  //Container ishlatishdan maqsad indekatorni ekranni o'rtasiga joylash
+                  child: Container(
+                    alignment: Alignment.center,
+                    width: ConstSizes.screenWidth(),
+                    height: 20.w,
+                    child: SmoothPageIndicator(
+                      controller: pageController,
+                      count: snap.data!.news!.length,
+                      effect: ExpandingDotsEffect(
+                        dotColor: AppColors.color254,
+                        activeDotColor: AppColors.primaryColor,
+                        // dotColor: const Color.fromRGBO(0, 0, 0, 0.05),
+                        // activeDotColor: const Color.fromRGBO(0, 0, 0, 0.07),
+                        dotHeight: 8.w,
+                        dotWidth: 10.w,
+                        spacing: 6.w,
+                      ),
                     ),
-                  ],
+                  ),
                 ),
-              );
-            },
-          ),
-          Positioned(
-            bottom: 0,
-            left: -16.w,
-            //Container ishlatishdan maqsad indekatorni ekranni o'rtasiga joylash
-            child: Container(
-              alignment: Alignment.center,
-              width: ConstSizes.screenWidth(),
-              height: 20.w,
-              child: SmoothPageIndicator(
-                controller: pageController,
-                count: MockData.news.length,
-                effect: ExpandingDotsEffect(
-                  dotColor: AppColors.color254,
-                  activeDotColor: AppColors.primaryColor,
-                  // dotColor: const Color.fromRGBO(0, 0, 0, 0.05),
-                  // activeDotColor: const Color.fromRGBO(0, 0, 0, 0.07),
-                  dotHeight: 8.w,
-                  dotWidth: 10.w,
-                  spacing: 6.w,
-                ),
-              ),
-            
-              ),
-          ),
-        ],
-      ),
-    );
+              ],
+            ),
+          );
+        });
   }
 }

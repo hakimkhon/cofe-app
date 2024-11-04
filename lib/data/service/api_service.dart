@@ -1,3 +1,4 @@
+import 'package:cafe/data/model/news_model.dart';
 import 'package:cafe/data/routes/cafe_route.dart';
 import 'package:cafe/data/routes/navigator_service.dart';
 import 'package:dio/dio.dart';
@@ -5,6 +6,9 @@ import 'package:flutter/widgets.dart';
 
 class ApiService {
   final Dio _dio = Dio();
+  static final ApiService _instance = ApiService._init();
+  static ApiService get instance => _instance;
+  ApiService._init();
 
   ApiService() {
     _dio.options.baseUrl = "https://admin.axadjonovsardorbek.uz";
@@ -30,6 +34,17 @@ class ApiService {
         return handler.next(response);
       },
     ));
+  }
+
+  Future<NewsModel?> getNews() async {
+    try {
+      Response res = await _dio.get("/news/list");
+      NewsModel news = NewsModel.fromJson(res.data);
+      return news;
+    } catch (e) {
+      debugPrint("Error: $e");
+    }
+    return null;
   }
 
   Future<void> sendSMSCode({required String phoneNumber}) async {
@@ -59,7 +74,7 @@ class ApiService {
     } catch (e) {
       debugPrint("On catch ERROR: $e");
     }
-  }  
+  }
 }
 
 class CafeApiService {
@@ -118,5 +133,5 @@ class CafeApiService {
     } catch (e) {
       debugPrint("On catch ERROR: $e");
     }
-  }  
+  }
 }

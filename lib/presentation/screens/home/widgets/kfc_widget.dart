@@ -16,7 +16,7 @@ class KfcWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final pageController = PageController();
     return FutureBuilder(
-        future: ApiService.instance.getNews(),
+        future: CafeApiService.instance.getNews(),
         builder: (context, AsyncSnapshot<NewsModel?> snap) {
           if (snap.hasError) {
             return const Center(
@@ -52,7 +52,7 @@ class KfcWidget extends StatelessWidget {
                                 fit: BoxFit.fill,
                                 image: NetworkImage(
                                   snap.data?.news?[index].imageUrl ??
-                                      "https://yuz.uz/imageproxy/1920x/https://yuz.uz/file/news/96432fba0254d5d672bc06f2e4ad611f.jpg",
+                                      "https://picsum.photos/seed/513/600",
                                 ),
                               ),
                             ),

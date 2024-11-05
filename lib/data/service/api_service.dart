@@ -1,17 +1,18 @@
+import 'package:cafe/data/model/filials_model.dart';
 import 'package:cafe/data/model/news_model.dart';
 import 'package:cafe/data/routes/cafe_route.dart';
 import 'package:cafe/data/routes/navigator_service.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/widgets.dart';
 
-class ApiService {
+class CafeApiService {
   final Dio _dio = Dio();
-  static final ApiService _instance = ApiService._init();
-  static ApiService get instance => _instance;
-  ApiService._init();
+  static final CafeApiService _instance = CafeApiService._init();
+  static CafeApiService get instance => _instance;
+  CafeApiService._init();
 
-  ApiService() {
-    _dio.options.baseUrl = "https://admin.axadjonovsardorbek.uz";
+  CafeApiService() {
+    _dio.options.baseUrl = "https://apis.axadjonovsardorbek.uz";
     _dio.options.connectTimeout = const Duration(seconds: 10);
 
     _dio.interceptors.add(InterceptorsWrapper(
@@ -42,46 +43,32 @@ class ApiService {
       NewsModel news = NewsModel.fromJson(res.data);
       return news;
     } catch (e) {
-      debugPrint("Error: $e");
+      debugPrint("1. Error: $e");
     }
     return null;
   }
 
-  Future<void> sendSMSCode({required String phoneNumber}) async {
+  Future<FilialsModelNew?> getFilial() async {
     try {
-      await _dio.post("/auth/sms/register/phone", data: {"phone": phoneNumber});
-      NavigationService.instance.navigateMyScreen(
-          routeName: CafeRouteNames.confirm, arguments: phoneNumber);
+      Response res = await _dio.get("/branches/list");
+      FilialsModelNew branch = FilialsModelNew.fromJson(res.data);
+      return branch;
     } catch (e) {
-      debugPrint("On catch ERROR: $e");
+      debugPrint("Error: $e");
     }
-  }
-
-  Future<void> checkSMSCode({
-    required String phoneNumber,
-    required String smsCod,
-  }) async {
-    //POST
-    try {
-      await _dio.post("/auth/user/register", data: {
-        "phone": phoneNumber,
-        "confirmation_code": smsCod,
-      });
-      NavigationService.instance.navigateMyScreen(
-        routeName: CafeRouteNames.home,
-        arguments: phoneNumber,
-      );
-    } catch (e) {
-      debugPrint("On catch ERROR: $e");
-    }
+    return null;
   }
 }
 
-class CafeApiService {
+//quyidagi class tizimga kirish uchun sms kodni tasdiqlash uchun
+class ApiService {
   final Dio _dio = Dio();
+  static final ApiService _instance = ApiService._init();
+  static ApiService get instance => _instance;
+  ApiService._init();
 
-  CafeApiService() {
-    _dio.options.baseUrl = "https://apis.axadjonovsardorbek.uz";
+  ApiService() {
+    _dio.options.baseUrl = "https://admin.axadjonovsardorbek.uz";
     _dio.options.connectTimeout = const Duration(seconds: 10);
 
     _dio.interceptors.add(InterceptorsWrapper(

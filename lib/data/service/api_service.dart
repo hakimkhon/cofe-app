@@ -11,6 +11,10 @@ class CafeApiService {
   static CafeApiService get instance => _instance;
   CafeApiService._init();
 
+  //   static final ApiService _instance = ApiService._init();
+  // static ApiService get instance => _instance;
+  // ApiService._init();
+
   CafeApiService() {
     _dio.options.baseUrl = "https://apis.axadjonovsardorbek.uz";
     _dio.options.connectTimeout = const Duration(seconds: 10);
@@ -39,8 +43,10 @@ class CafeApiService {
 
   Future<NewsModel?> getNews() async {
     try {
-      Response res = await _dio.get("/news/list");
+      Response res =
+          await _dio.get("https://apis.axadjonovsardorbek.uz/news/list");
       NewsModel news = NewsModel.fromJson(res.data);
+      debugPrint(res.data.toString());
       return news;
     } catch (e) {
       debugPrint("1. Error: $e");
@@ -50,11 +56,22 @@ class CafeApiService {
 
   Future<FilialsModelNew?> getFilial() async {
     try {
-      Response res = await _dio.get("/branches/list");
+      Response res = await _dio.get("https://apis.axadjonovsardorbek.uz/branches/list");
       FilialsModelNew branch = FilialsModelNew.fromJson(res.data);
       return branch;
     } catch (e) {
-      debugPrint("Error: $e");
+      debugPrint("2. Error: $e");
+    }
+    return null;
+  }
+
+  Future getFilialDetail({required String id}) async {
+    try {
+      Response res = await _dio.get("https://apis.axadjonovsardorbek.uz/branches/get?id=$id");
+      FilialsModelNew branch = FilialsModelNew.fromJson(res.data);
+      return branch;
+    } catch (e) {
+      debugPrint("2. Error: $e");
     }
     return null;
   }

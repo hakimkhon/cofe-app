@@ -8,7 +8,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class DetailFilialPage extends StatelessWidget {
-  const DetailFilialPage({super.key});
+  const DetailFilialPage({super.key, required this.id});
+  final String id;
 
   @override
   Widget build(BuildContext context) {

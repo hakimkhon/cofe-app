@@ -33,7 +33,7 @@ class KfcWidget extends StatelessWidget {
               children: [
                 PageView.builder(
                   controller: pageController,
-                  itemCount: 3,
+                  itemCount: snap.data!.news!.length,
                   itemBuilder: (context, index) {
                     return ZoomTapAnimation(
                       onTap: () {

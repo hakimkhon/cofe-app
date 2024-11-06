@@ -52,7 +52,7 @@ class CafeRoute {
         return MaterialPageRoute(builder: (context) => const FilialsPage());
       case CafeRouteNames.detailFilial:
         return MaterialPageRoute(
-            builder: (context) => const DetailFilialPage());
+            builder: (context) => DetailFilialPage(id: ,));
       case CafeRouteNames.confirm:
         return MaterialPageRoute(
             builder: (context) => ConfirmPage(

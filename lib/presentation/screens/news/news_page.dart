@@ -6,6 +6,7 @@ import 'package:cafe/presentation/screens/home/widgets/header_widget.dart';
 import 'package:cafe/presentation/widgets/custom_text_widget.dart';
 import 'package:cafe/presentation/widgets/my_vertical_divider_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class NewsPage extends StatelessWidget {
   const NewsPage({super.key});
@@ -15,7 +16,7 @@ class NewsPage extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+          padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 8.h),
           child: Column(
             children: [
               const HeaderWidget(),
@@ -41,7 +42,7 @@ class NewsPage extends StatelessWidget {
                                 children: [
                                   Container(
                                     width: double.infinity,
-                                    height: 190,
+                                    height: 190.h,
                                     alignment: Alignment.bottomLeft,
                                     decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(10),

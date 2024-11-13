@@ -65,10 +65,10 @@ class CafeApiService {
     return null;
   }
 
-  Future getFilialDetail({required String id}) async {
+  Future<Branch?> getFilialDetail({required String id}) async {
     try {
       Response res = await _dio.get("https://apis.axadjonovsardorbek.uz/branches/get?id=$id");
-      FilialsModelNew branch = FilialsModelNew.fromJson(res.data);
+      Branch branch = Branch.fromJson(res.data);
       return branch;
     } catch (e) {
       debugPrint("2. Error: $e");

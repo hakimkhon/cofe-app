@@ -24,13 +24,14 @@ class MyVerticalDividerText extends StatelessWidget {
       child: Container(
         alignment: Alignment.bottomCenter,
         // color: Colors.blue,
-        height: ConstSizes.screenHight()*0.07,
+        height: ConstSizes.screenHight()*0.07.h,
         child: Row(
           children: [
             Container(
-              margin: EdgeInsets.only(right: 5.w),
-              height: 36,
-              width: 3,
+              margin: EdgeInsets.only(right: 5.w, top: 20.h, bottom: 20.h),
+              // padding: EdgeInsets.symmetric(vertical: 10.h),
+              height: double.infinity,
+              width: 3.w,
               color: AppColors.color254,
             ),
             MyText(

@@ -110,6 +110,7 @@ class FilialsPage extends StatelessWidget {
                                           Navigator.pushNamed(
                                             context,
                                             CafeRouteNames.detailFilial,
+                                            arguments: snapshot.data?.branches?[index].id ?? "",
                                           );
                                         },
                                         child: Container(

@@ -1,3 +1,4 @@
+import 'package:cafe/data/model/category_model.dart';
 import 'package:cafe/data/model/filials_model.dart';
 import 'package:cafe/data/model/news_model.dart';
 import 'package:cafe/data/routes/cafe_route.dart';
@@ -49,7 +50,7 @@ class CafeApiService {
       debugPrint(res.data.toString());
       return news;
     } catch (e) {
-      debugPrint("1. Error: $e");
+      debugPrint("getNews Error: $e");
     }
     return null;
   }
@@ -60,7 +61,7 @@ class CafeApiService {
       FilialsModelNew branch = FilialsModelNew.fromJson(res.data);
       return branch;
     } catch (e) {
-      debugPrint("2. Error: $e");
+      debugPrint("getFilial Error: $e");
     }
     return null;
   }
@@ -71,7 +72,18 @@ class CafeApiService {
       Branch branch = Branch.fromJson(res.data);
       return branch;
     } catch (e) {
-      debugPrint("2. Error: $e");
+      debugPrint("getFilialDetail Error: $e");
+    }
+    return null;
+  }
+
+  Future<CategoryModel?> getCategory() async {
+    try {
+      Response res = await _dio.get("https://apis.axadjonovsardorbek.uz/categories/list");
+      CategoryModel branch = CategoryModel.fromJson(res.data);
+      return branch;
+    } catch (e) {
+      debugPrint("getCategory Error: $e");
     }
     return null;
   }

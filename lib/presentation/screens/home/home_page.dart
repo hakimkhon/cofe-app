@@ -1,6 +1,6 @@
-import 'package:cafe/data/mock/mock_data.dart';
+import 'package:cafe/data/model/category_model.dart';
+import 'package:cafe/data/service/api_service.dart';
 import 'package:cafe/presentation/core/constant/colors.dart';
-import 'package:cafe/presentation/screens/home/widgets/burger_widget.dart';
 import 'package:cafe/presentation/screens/home/widgets/header_widget.dart';
 import 'package:cafe/presentation/screens/home/widgets/kfc_widget.dart';
 import 'package:cafe/presentation/screens/home/widgets/popular_food_widget.dart';
@@ -30,32 +30,46 @@ class _HomePageState extends State<HomePage> {
             children: [
               const HeaderWidget(),
               const KfcWidget(),
-              SizedBox(
-                width: double.infinity,
-                child: GridView.builder(
-                  controller: ScrollController(), // Scrol bo'lmaslik uchun
-                  itemCount: MockData.fastFood.length,
-                  shrinkWrap: true,
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                    crossAxisSpacing: 20,
-                    mainAxisSpacing: 15,
-                    childAspectRatio: 4.5,
-                  ),
-                  itemBuilder: (context, index) {
-                    return foods(
-                      MockData.fastFood[index].title,
-                      MockData.fastFood[index].icon,
-                      index,
-                    );
-                  },
-                ),
+              FutureBuilder(
+                future: CafeApiService.instance.getCategory(),
+                builder: (contex, AsyncSnapshot<CategoryModel?> snapshot) {
+                  return SizedBox(
+                    width: double.infinity,
+                    child: GridView.builder(
+                      controller: ScrollController(), // Scrol bo'lmaslik uchun
+                      itemCount: snapshot.data!.categories!.length,
+                      shrinkWrap: true,
+                      gridDelegate:
+                          const SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 2,
+                        crossAxisSpacing: 20,
+                        mainAxisSpacing: 15,
+                        childAspectRatio: 4.5,
+                      ),
+                      itemBuilder: (context, index) {
+                        if (snapshot.data != null) {
+                          return foods(
+                            title: snapshot.data?.categories?[index].name ??
+                                "Burger",
+                            icon: snapshot.data?.categories?[index].imageUrl ??
+                                "https://photos.axadjonovsardorbek.uz/cafe/burger.png",
+                            myIndex: index,
+                          );
+                        } else {
+                          return const Center(
+                            child: CircularProgressIndicator(),
+                          );
+                        }
+                      },
+                    ),
+                  );
+                },
               ),
-              BurgerWidget(
-                title: MockData.fastFood[chooseID].title,
-                image: MockData.fastFood[chooseID].image,
-                price: MockData.fastFood[chooseID].price,
-              ),
+              // BurgerWidget(
+              //   title: MockData.fastFood[chooseID].title,
+              //   image: MockData.fastFood[chooseID].image,
+              //   price: MockData.fastFood[chooseID].price,
+              // ),
               const PopularFoodWidget(),
             ],
           ),
@@ -64,11 +78,11 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  Widget foods(
-    String title,
-    String icon,
-    int myIndex,
-  ) {
+  Widget foods({
+    required String title,
+    required String icon,
+    required int myIndex,
+  }) {
     return ZoomTapAnimation(
       onTap: () {
         chooseID = myIndex;
@@ -87,7 +101,7 @@ class _HomePageState extends State<HomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Image(
-              image: AssetImage(icon),
+              image: NetworkImage(icon),
               width: 18.sp,
             ),
             MyText(

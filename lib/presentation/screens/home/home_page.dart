@@ -1,6 +1,7 @@
 import 'package:cafe/data/model/category_model.dart';
 import 'package:cafe/data/service/api_service.dart';
 import 'package:cafe/presentation/core/constant/colors.dart';
+import 'package:cafe/presentation/screens/home/widgets/burger_widget.dart';
 import 'package:cafe/presentation/screens/home/widgets/header_widget.dart';
 import 'package:cafe/presentation/screens/home/widgets/kfc_widget.dart';
 import 'package:cafe/presentation/screens/home/widgets/popular_food_widget.dart';
@@ -17,6 +18,7 @@ class HomePage extends StatefulWidget {
 }
 
 int chooseID = 0;
+String chooseProductID = "953ab5b3-c81f-422d-ba13-17496dc94dcf";
 
 class _HomePageState extends State<HomePage> {
   @override
@@ -33,43 +35,49 @@ class _HomePageState extends State<HomePage> {
               FutureBuilder(
                 future: CafeApiService.instance.getCategory(),
                 builder: (contex, AsyncSnapshot<CategoryModel?> snapshot) {
-                  return SizedBox(
-                    width: double.infinity,
-                    child: GridView.builder(
-                      controller: ScrollController(), // Scrol bo'lmaslik uchun
-                      itemCount: snapshot.data!.categories!.length,
-                      shrinkWrap: true,
-                      gridDelegate:
-                          const SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 2,
-                        crossAxisSpacing: 20,
-                        mainAxisSpacing: 15,
-                        childAspectRatio: 4.5,
+                  if (snapshot.data != null) {
+                    return SizedBox(
+                      width: double.infinity,
+                      child: GridView.builder(
+                        controller:
+                            ScrollController(), // Scrol bo'lmaslik uchun
+                        itemCount: snapshot.data!.categories!.length,
+                        shrinkWrap: true,
+                        gridDelegate:
+                            const SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 2,
+                          crossAxisSpacing: 20,
+                          mainAxisSpacing: 15,
+                          childAspectRatio: 4.5,
+                        ),
+                        itemBuilder: (context, index) {
+                          if (snapshot.data != null) {
+                            return foods(
+                              title: snapshot.data?.categories?[index].name ??
+                                  "Burger",
+                              icon: snapshot
+                                      .data?.categories?[index].imageUrl ??
+                                  "https://photos.axadjonovsardorbek.uz/cafe/burger.png",
+                              myIndex: index,
+                              productID:
+                                  snapshot.data?.categories?[index].id ?? "",
+                            );
+                          } else {
+                            return const Center(
+                              child: CircularProgressIndicator(),
+                            );
+                          }
+                        },
                       ),
-                      itemBuilder: (context, index) {
-                        if (snapshot.data != null) {
-                          return foods(
-                            title: snapshot.data?.categories?[index].name ??
-                                "Burger",
-                            icon: snapshot.data?.categories?[index].imageUrl ??
-                                "https://photos.axadjonovsardorbek.uz/cafe/burger.png",
-                            myIndex: index,
-                          );
-                        } else {
-                          return const Center(
-                            child: CircularProgressIndicator(),
-                          );
-                        }
-                      },
-                    ),
-                  );
+                    );
+                  } else {
+                    return const Center(
+                      child: CircularProgressIndicator(),
+                    );
+                  }
                 },
               ),
-              // BurgerWidget(
-              //   title: MockData.fastFood[chooseID].title,
-              //   image: MockData.fastFood[chooseID].image,
-              //   price: MockData.fastFood[chooseID].price,
-              // ),
+              BurgerWidget(id: chooseProductID),
               const PopularFoodWidget(),
             ],
           ),
@@ -81,11 +89,13 @@ class _HomePageState extends State<HomePage> {
   Widget foods({
     required String title,
     required String icon,
+    required String productID,
     required int myIndex,
   }) {
     return ZoomTapAnimation(
       onTap: () {
         chooseID = myIndex;
+        chooseProductID = productID;
         setState(() {});
       },
       child: Container(

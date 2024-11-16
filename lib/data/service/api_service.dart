@@ -1,6 +1,7 @@
 import 'package:cafe/data/model/category_model.dart';
 import 'package:cafe/data/model/filials_model.dart';
 import 'package:cafe/data/model/news_model.dart';
+import 'package:cafe/data/model/products_model.dart';
 import 'package:cafe/data/routes/cafe_route.dart';
 import 'package:cafe/data/routes/navigator_service.dart';
 import 'package:dio/dio.dart';
@@ -73,6 +74,17 @@ class CafeApiService {
       return branch;
     } catch (e) {
       debugPrint("getFilialDetail Error: $e");
+    }
+    return null;
+  }
+  
+  Future<ProductsModel?> getProductList({required String id}) async {
+    try {
+      Response res = await _dio.get("https://apis.axadjonovsardorbek.uz/products/list?category_id=$id");
+      ProductsModel products = ProductsModel.fromJson(res.data);
+      return products;
+    } catch (e) {
+      debugPrint("getProductList Error: $e");
     }
     return null;
   }

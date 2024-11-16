@@ -31,7 +31,7 @@ class MyApp extends StatelessWidget {
           // },
           navigatorKey: NavigationService.instance.navigatorKey,
           onGenerateRoute: CafeRoute.generateRoute,
-          initialRoute: CafeRouteNames.register,
+          initialRoute: CafeRouteNames.home,
         );
       },
     );

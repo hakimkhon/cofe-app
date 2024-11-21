@@ -2,7 +2,6 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:yandex_mapkit/yandex_mapkit.dart';
 
 class MapPage extends StatefulWidget {
   const MapPage({super.key, required this.latitude, required this.longitude});
@@ -14,25 +13,22 @@ class MapPage extends StatefulWidget {
 }
 
 class _MapPageState extends State<MapPage> {
-
-  
-  // final Completer<GoogleMapController> _controller = Completer();
+  final Completer<GoogleMapController> _controller = Completer();
 
   // LatLng _center = LatLng(latitude, longitude);
 
-  // void _onMapCreated(GoogleMapController controller) {
-  //   _controller.complete(controller);
-  // }
+  void _onMapCreated(GoogleMapController controller) {
+    _controller.complete(controller);
+  }
 
   @override
   Widget build(BuildContext context) {
-    return YandexMap();
-    // return GoogleMap(
-    //   onMapCreated: _onMapCreated,
-    //   initialCameraPosition: CameraPosition(
-    //     target: LatLng(widget.latitude, widget.longitude),
-    //     zoom: 14.0,
-    //   ),
-    // );
+    // return YandexMap();
+    return GoogleMap(
+        onMapCreated: _onMapCreated,
+        initialCameraPosition: CameraPosition(
+          target: LatLng(widget.latitude, widget.longitude),
+          zoom: 14.0,
+        ));
   }
 }

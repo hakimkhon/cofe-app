@@ -6,6 +6,7 @@ import 'package:cafe/presentation/core/constant/sizes.dart';
 import 'package:cafe/presentation/core/resource/assets.dart';
 import 'package:cafe/presentation/screens/home/widgets/header_widget.dart';
 import 'package:cafe/presentation/widgets/custom_text_widget.dart';
+import 'package:cafe/presentation/widgets/map_page.dart';
 import 'package:cafe/presentation/widgets/my_vertical_divider_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -19,11 +20,11 @@ class FilialsPage extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 15.w),
+          padding: EdgeInsets.only(left: 16.w, right: 16.w),
           child: Column(
             children: [
-              const HeaderWidget(),
-              const MyVerticalDividerText(data: "filiallar"),
+              const HeaderWidget(), //0.06
+              const MyVerticalDividerText(data: "filiallar"), //0.07
               FutureBuilder(
                 future: CafeApiService.instance.getFilial(),
                 builder: (context, AsyncSnapshot<FilialsModelNew?> snapshot) {
@@ -36,23 +37,25 @@ class FilialsPage extends StatelessWidget {
                       itemCount: snapshot.data?.branches?.length,
                       itemBuilder: (BuildContext context, int index) {
                         return Padding(
-                          padding: EdgeInsets.symmetric(
-                              vertical: ConstSizes.height(1)),
+                          padding:
+                              EdgeInsets.only(bottom: ConstSizes.height(2)),
                           child: Card(
                             color: AppColors.secondaryColor,
                             child: Column(
                               children: [
-                                Container(
+                                SizedBox(
                                   width: double.infinity,
                                   height: 150.h,
-                                  decoration: const BoxDecoration(
+                                  child: ClipRRect(
                                     borderRadius: BorderRadius.only(
-                                      topLeft: Radius.circular(16),
-                                      topRight: Radius.circular(16),
+                                      topRight: Radius.circular(15.r),
+                                      topLeft: Radius.circular(15.r),
                                     ),
-                                    image: DecorationImage(
-                                      image: AssetImage(ImageAssets.map),
-                                      fit: BoxFit.fill,
+                                    child: MapPage(
+                                      latitude: snapshot.data!.branches![index]
+                                          .location!.latitude!,
+                                      longitude: snapshot.data!.branches![index]
+                                          .location!.longitude!,
                                     ),
                                   ),
                                 ),
@@ -75,13 +78,18 @@ class FilialsPage extends StatelessWidget {
                                             children: [
                                               Container(
                                                 margin: const EdgeInsets.only(
-                                                    right: 5),
+                                                  right: 5,
+                                                ),
                                                 height: 36,
                                                 width: 3,
                                                 color: AppColors.color254,
                                               ),
                                               MyText(
-                                                data: snapshot.data?.branches?[index].name ?? "Namangan Shaxar",
+                                                data: snapshot
+                                                        .data
+                                                        ?.branches?[index]
+                                                        .name ??
+                                                    "Namangan Shaxar",
                                                 size: 21,
                                                 color: AppColors.color108,
                                               ),
@@ -89,13 +97,18 @@ class FilialsPage extends StatelessWidget {
                                           ),
                                           Padding(
                                             padding: const EdgeInsets.symmetric(
-                                                vertical: 8.0),
+                                              vertical: 8.0,
+                                            ),
                                             child: Row(
                                               children: [
                                                 const Icon(
-                                                    Icons.access_time_outlined),
+                                                    Icons.access_time_outlined,),
                                                 MyText(
-                                                  data: snapshot.data?.branches?[index].openingHours ?? "00:00 - 23:59",
+                                                  data: snapshot
+                                                          .data
+                                                          ?.branches?[index]
+                                                          .openingHours ??
+                                                      "00:00 - 23:59",
                                                   color: AppColors.color108,
                                                   size: 20,
                                                   left: 6,
@@ -110,7 +123,9 @@ class FilialsPage extends StatelessWidget {
                                           Navigator.pushNamed(
                                             context,
                                             CafeRouteNames.detailFilial,
-                                            arguments: snapshot.data?.branches?[index].id ?? "",
+                                            arguments: snapshot.data
+                                                    ?.branches?[index].id ??
+                                                "",
                                           );
                                         },
                                         child: Container(
@@ -118,7 +133,7 @@ class FilialsPage extends StatelessWidget {
                                           height: 50,
                                           decoration: BoxDecoration(
                                             borderRadius:
-                                                BorderRadius.circular(10),
+                                                BorderRadius.circular(10.r),
                                             color: AppColors.primaryColor,
                                           ),
                                           child: const Icon(

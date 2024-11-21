@@ -16,17 +16,17 @@ class NewsPage extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 8.h),
+          padding: EdgeInsets.only(left: 16.w, right: 16.w),
           child: Column(
             children: [
-              const HeaderWidget(),
-              const MyVerticalDividerText(data: "yangiliklar"),
+              const HeaderWidget(), //0.06
+              const MyVerticalDividerText(data: "yangiliklar"), //0.07
               FutureBuilder(
                 future: CafeApiService.instance.getNews(),
                 builder: (contex, AsyncSnapshot<NewsModel?> snapshot) {
                   return SizedBox(
-                    width: ConstSizes.width(100),
-                    height: ConstSizes.height(80),
+                    width: ConstSizes.screenWidth(),
+                    height: ConstSizes.screenHight() - ConstSizes.statusBarHight() - ConstSizes.screenHight()*0.13,
                     child: ListView.builder(
                       itemCount: snapshot.data?.news?.length,
                       itemBuilder: (context, index) {

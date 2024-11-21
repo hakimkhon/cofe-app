@@ -2,24 +2,29 @@ import 'package:cafe/data/model/filials_model.dart';
 import 'package:cafe/data/service/api_service.dart';
 import 'package:cafe/presentation/core/constant/colors.dart';
 import 'package:cafe/presentation/core/constant/sizes.dart';
-import 'package:cafe/presentation/core/resource/assets.dart';
 import 'package:cafe/presentation/screens/home/widgets/header_widget.dart';
 import 'package:cafe/presentation/widgets/custom_text_widget.dart';
+import 'package:cafe/presentation/widgets/map_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class DetailFilialPage extends StatelessWidget {
+class DetailFilialPage extends StatefulWidget {
   const DetailFilialPage({super.key, required this.id});
   final String id;
 
+  @override
+  State<DetailFilialPage> createState() => _DetailFilialPageState();
+}
+
+class _DetailFilialPageState extends State<DetailFilialPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 15.w, vertical: 0),
+          padding: EdgeInsets.only(left: 16.w, right: 16.w),
           child: FutureBuilder(
-            future: CafeApiService.instance.getFilialDetail(id: id),
+            future: CafeApiService.instance.getFilialDetail(id: widget.id),
             builder: (context, AsyncSnapshot<Branch?> snapshot) {
               if (snapshot.hasData) {
                 return Column(
@@ -59,20 +64,16 @@ class DetailFilialPage extends StatelessWidget {
                         ],
                       ),
                     ),
-                    Container(
-                      width: double.infinity,
+                    SizedBox(
+                      width: ConstSizes.screenWidth(),
                       height: ConstSizes.screenHight() -
                           ConstSizes.statusBarHight() -
-                          ConstSizes.screenHight() * 0.19,
-                      margin: EdgeInsets.only(top: 10.w),
-                      decoration: BoxDecoration(
-                        color: Colors.amberAccent,
-                        borderRadius: BorderRadius.circular(15),
-                        image: const DecorationImage(
-                          image: AssetImage(
-                            ImageAssets.detailFilial,
-                          ),
-                          fit: BoxFit.fill,
+                          ConstSizes.screenHight() * 0.17,
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(15.r),
+                        child: MapPage(
+                          latitude: snapshot.data!.location!.latitude!,
+                          longitude: snapshot.data!.location!.longitude!,
                         ),
                       ),
                     )

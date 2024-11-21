@@ -14,7 +14,6 @@ class HeaderWidget extends StatelessWidget {
       children: [
         Container(
           alignment: Alignment.bottomCenter,
-          // color: Colors.green,
           height: ConstSizes.screenHight() * 0.06,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -76,22 +75,4 @@ class HeaderWidget extends StatelessWidget {
       ],
     );
   }
-
-  /**
-   Positioned(
-                  left: 14.r,
-                  bottom: -5.r,
-                  child: CircleAvatar(
-                    radius: 7.r,
-                    backgroundColor: AppColors.primaryColor,
-                    child: Text(
-                      "2",
-                      style: TextStyle(
-                          fontSize: 8.sp,
-                          color: AppColors.secondaryColor,
-                          fontWeight: FontWeight.w300),
-                    ),
-                  ),
-                ),
-   */
 }

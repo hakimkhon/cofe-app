@@ -1,6 +1,7 @@
 import 'package:cafe/data/model/category_model.dart';
 import 'package:cafe/data/service/api_service.dart';
 import 'package:cafe/presentation/core/constant/colors.dart';
+import 'package:cafe/presentation/core/constant/sizes.dart';
 import 'package:cafe/presentation/screens/home/widgets/burger_widget.dart';
 import 'package:cafe/presentation/screens/home/widgets/header_widget.dart';
 import 'package:cafe/presentation/screens/home/widgets/kfc_widget.dart';
@@ -28,57 +29,70 @@ class _HomePageState extends State<HomePage> {
         bottom: false,
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 15.w),
-          child: ListView(
+          child: Column(
             children: [
               const HeaderWidget(),
-              const KfcWidget(),
-              FutureBuilder(
-                future: CafeApiService.instance.getCategory(),
-                builder: (contex, AsyncSnapshot<CategoryModel?> snapshot) {
-                  if (snapshot.data != null) {
-                    return SizedBox(
-                      width: double.infinity,
-                      child: GridView.builder(
-                        controller:
-                            ScrollController(), // Scrol bo'lmaslik uchun
-                        itemCount: snapshot.data!.categories!.length,
-                        shrinkWrap: true,
-                        gridDelegate:
-                            const SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: 2,
-                          crossAxisSpacing: 20,
-                          mainAxisSpacing: 15,
-                          childAspectRatio: 4.5,
-                        ),
-                        itemBuilder: (context, index) {
-                          if (snapshot.data != null) {
-                            return foods(
-                              title: snapshot.data?.categories?[index].name ??
-                                  "Burger",
-                              icon: snapshot
-                                      .data?.categories?[index].imageUrl ??
-                                  "https://photos.axadjonovsardorbek.uz/cafe/burger.png",
-                              myIndex: index,
-                              productID:
-                                  snapshot.data?.categories?[index].id ?? "",
-                            );
-                          } else {
-                            return const Center(
-                              child: CircularProgressIndicator(),
-                            );
-                          }
-                        },
-                      ),
-                    );
-                  } else {
-                    return const Center(
-                      child: CircularProgressIndicator(),
-                    );
-                  }
-                },
+              SizedBox(
+                width: ConstSizes.screenWidth(),
+                height: ConstSizes.screenHight() -
+                    ConstSizes.statusBarHight() -
+                    ConstSizes.screenHight() * 0.06,
+                child: ListView(
+                  children: [
+                    const KfcWidget(),
+                    FutureBuilder(
+                      future: CafeApiService.instance.getCategory(),
+                      builder:
+                          (contex, AsyncSnapshot<CategoryModel?> snapshot) {
+                        if (snapshot.data != null) {
+                          return GridView.builder(
+                            controller:
+                                ScrollController(), // Scrol bo'lmaslik uchun
+                            itemCount: snapshot.data!.categories!.length,
+                            shrinkWrap: true,
+                            gridDelegate:
+                                const SliverGridDelegateWithFixedCrossAxisCount(
+                              crossAxisCount: 2,
+                              crossAxisSpacing: 20,
+                              mainAxisSpacing: 15,
+                              childAspectRatio: 4.5,
+                            ),
+                            itemBuilder: (context, index) {
+                              if (snapshot.data != null) {
+                                return foods(
+                                  title: snapshot
+                                          .data?.categories?[index].name ??
+                                      "Burger",
+                                  icon: snapshot.data?.categories?[index]
+                                          .imageUrl ??
+                                      "https://photos.axadjonovsardorbek.uz/cafe/burger.png",
+                                  myIndex: index,
+                                  productID:
+                                      snapshot.data?.categories?[index].id ??
+                                          "",
+                                );
+                                // } else if (snapshot.data == null) {
+                                //   return const Text("Malumot topilmadi");
+                              } else {
+                                return const Center(
+                                  child: CircularProgressIndicator(),
+                                );
+                              }
+                            },
+                          );
+                        
+                        } else {
+                          return const Center(
+                            child: CircularProgressIndicator(),
+                          );
+                        }
+                      },
+                    ),
+                    BurgerWidget(id: chooseProductID),
+                    const PopularFoodWidget(),
+                  ],
+                ),
               ),
-              BurgerWidget(id: chooseProductID),
-              const PopularFoodWidget(),
             ],
           ),
         ),

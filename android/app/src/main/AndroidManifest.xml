@@ -3,6 +3,8 @@
         android:label="cafe"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
+        <meta-data android:name="com.google.android.geo.API_KEY"
+               android:value="AIzaSyAon8iH3cLkGKGynMrnPtkNDHdp-xI3u-0"/>
         <activity
             android:enableOnBackInvokedCallback="true"
             android:name=".MainActivity"

@@ -60,19 +60,20 @@ class _HomePageState extends State<HomePage> {
                             itemBuilder: (context, index) {
                               if (snapshot.data != null) {
                                 return foods(
-                                  title: snapshot
-                                          .data?.categories?[index].name ??
-                                      "Burger",
-                                  icon: snapshot.data?.categories?[index]
-                                          .imageUrl ??
+                                  title:
+                                      snapshot.data?.categories?[index].name ??
+                                          "Burger",
+                                  icon: snapshot
+                                          .data?.categories?[index].imageUrl ??
                                       "https://photos.axadjonovsardorbek.uz/cafe/burger.png",
                                   myIndex: index,
                                   productID:
                                       snapshot.data?.categories?[index].id ??
                                           "",
                                 );
-                                } else if (snapshot.data!.categories!.isEmpty) {
-                                  return const Text("Malumot topilmadi");
+                              } else if (snapshot.data!.categories!.isEmpty) {
+                                debugPrint("isEmpty");
+                                return const Text("Malumot topilmadi");
                               } else {
                                 return const Center(
                                   child: CircularProgressIndicator(),
@@ -80,7 +81,6 @@ class _HomePageState extends State<HomePage> {
                               }
                             },
                           );
-                        
                         } else {
                           return const Center(
                             child: CircularProgressIndicator(),

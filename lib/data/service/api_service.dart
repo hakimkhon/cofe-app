@@ -92,8 +92,8 @@ class CafeApiService {
   Future<CategoryModel?> getCategory() async {
     try {
       Response res = await _dio.get("https://apis.axadjonovsardorbek.uz/categories/list");
-      CategoryModel branch = CategoryModel.fromJson(res.data);
-      return branch;
+      CategoryModel category = CategoryModel.fromJson(res.data);
+      return category;
     } catch (e) {
       debugPrint("getCategory Error: $e");
     }

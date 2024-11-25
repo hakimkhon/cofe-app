@@ -71,9 +71,6 @@ class _HomePageState extends State<HomePage> {
                                       snapshot.data?.categories?[index].id ??
                                           "",
                                 );
-                              } else if (snapshot.data!.categories!.isEmpty) {
-                                debugPrint("isEmpty");
-                                return const Text("Malumot topilmadi");
                               } else {
                                 return const Center(
                                   child: CircularProgressIndicator(),

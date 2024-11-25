@@ -1,8 +1,8 @@
 import 'package:cafe/data/model/products_model.dart';
 import 'package:cafe/data/service/api_service.dart';
 import 'package:cafe/presentation/core/constant/colors.dart';
-import 'package:cafe/presentation/widgets/custom_button.dart';
 import 'package:cafe/presentation/widgets/custom_text_widget.dart';
+import 'package:cafe/presentation/widgets/my_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -112,7 +112,7 @@ class BurgerWidget extends StatelessWidget {
                               ),
                             ],
                           ),
-                          CustomButton(onTap: () {}),
+                          const MyButton(),
                         ],
                       ),
                     ),
@@ -120,6 +120,14 @@ class BurgerWidget extends StatelessWidget {
                 },
               ),
             ],
+          );
+        } else if (snapshot.data == null) {
+          return Center(
+            child: MyText(
+              data: "Ma'lumot yo'q",
+              size: 24.sp,
+              color: AppColors.primaryColor,
+            ),
           );
         } else {
           return const Center(

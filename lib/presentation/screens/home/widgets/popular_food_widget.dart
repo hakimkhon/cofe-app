@@ -1,9 +1,8 @@
 import 'package:cafe/presentation/core/constant/colors.dart';
 import 'package:cafe/presentation/core/constant/sizes.dart';
 import 'package:cafe/presentation/core/resource/assets.dart';
-import 'package:cafe/presentation/widgets/custom_button.dart';
 import 'package:cafe/presentation/widgets/custom_text_widget.dart';
-// import 'package:cafe/presentation/widgets/increment_amount_widget.dart';
+import 'package:cafe/presentation/widgets/my_button.dart';
 import 'package:cafe/presentation/widgets/my_vertical_divider_text.dart';
 import 'package:flutter/material.dart';
 
@@ -26,7 +25,7 @@ class PopularFoodWidget extends StatelessWidget {
           "Chizburger",
           "Mol go'shti kotleti, pomidor, aysberg, pishloq, tuzlangan bodring, piyoz, xantal, ketchup, mayonez",
           ImageAssets.chizburger,
-          CustomButton(onTap: () {}),
+          const MyButton(),
         ),
       ],
     );
